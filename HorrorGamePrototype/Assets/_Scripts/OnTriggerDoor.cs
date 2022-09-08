@@ -6,6 +6,10 @@ public class OnTriggerDoor : MonoBehaviour
 {
     static public bool _OnTriggerDoor {get; private set; }
     
+    private void Update()
+    {
+        Debug.Log(_OnTriggerDoor);
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DragginSystem : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class DragginSystem : MonoBehaviour
     float Distant = 3;
     
     private SpringJoint m_SpringJoint;
+    [SerializeField] Image Pointing;
+    
 
     private void Update()
     {
@@ -21,43 +24,46 @@ public class DragginSystem : MonoBehaviour
         {
             return;
         }
-
-        var mainCamera = FindCamera();
-
-        // We need to actually hit an object
-        RaycastHit hit = new RaycastHit();
-        if (
-            !Physics.Raycast(mainCamera.ScreenPointToRay(Input.mousePosition).origin,
-                             mainCamera.ScreenPointToRay(Input.mousePosition).direction, out hit, 100,
-                             Physics.DefaultRaycastLayers))
-        {
-            return;
-        }
-        // We need to hit a rigidbody that is not kinematic
-        if (!hit.rigidbody || hit.rigidbody.isKinematic)
-        {
-            return;
-        }
-
-        if (!m_SpringJoint)
-        {
-            var go = new GameObject("Rigidbody dragger");
-            Rigidbody body = go.AddComponent<Rigidbody>();
-            m_SpringJoint = go.AddComponent<SpringJoint>();
-            body.isKinematic = true;
-        }
-
-        m_SpringJoint.transform.position = hit.point;
-        m_SpringJoint.anchor = Vector3.zero;
-
-        m_SpringJoint.spring = k_Spring;
-        m_SpringJoint.damper = k_Damper;
-        m_SpringJoint.maxDistance = k_Distance;
-        m_SpringJoint.connectedBody = hit.rigidbody;
-
+        
         if (OnTriggerDoor._OnTriggerDoor)
-        {
-            StartCoroutine("DragObject", hit.distance);
+        { 
+                var mainCamera = FindCamera();
+
+            // We need to actually hit an object
+            RaycastHit hit = new RaycastHit();
+            if (
+                !Physics.Raycast(mainCamera.ScreenPointToRay(Input.mousePosition).origin,
+                                 mainCamera.ScreenPointToRay(Input.mousePosition).direction, out hit, 100,
+                                 Physics.DefaultRaycastLayers))
+            {
+                
+                return;
+            }
+            // We need to hit a rigidbody that is not kinematic
+           if (!hit.rigidbody || hit.rigidbody.isKinematic)
+            {
+                return;
+            }
+           
+            if (!m_SpringJoint)
+            {
+                var go = new GameObject("Rigidbody dragger");
+                Rigidbody body = go.AddComponent<Rigidbody>();
+                m_SpringJoint = go.AddComponent<SpringJoint>();
+                body.isKinematic = true;
+            }
+
+            m_SpringJoint.transform.position = hit.point;
+            m_SpringJoint.anchor = Vector3.zero;
+
+            m_SpringJoint.spring = k_Spring;
+            m_SpringJoint.damper = k_Damper;
+            m_SpringJoint.maxDistance = k_Distance;
+            m_SpringJoint.connectedBody = hit.rigidbody;
+
+
+                StartCoroutine("DragObject", hit.distance);
+
         }
     }
 
@@ -70,6 +76,7 @@ public class DragginSystem : MonoBehaviour
         var mainCamera = FindCamera();
         while (Input.GetMouseButton(0))
         {
+            
             var ray = mainCamera.ScreenPointToRay(Input.mousePosition);
             m_SpringJoint.transform.position = ray.GetPoint(distance);
             yield return null;
@@ -90,6 +97,20 @@ public class DragginSystem : MonoBehaviour
         }
 
         return Camera.main;
+    }
+
+    private void OnMouseEnter()
+    {
+        if(OnTriggerDoor._OnTriggerDoor)
+        {
+            Pointing.color = new Color(Pointing.color.r, Pointing.color.g, Pointing.color.b, 1f);
+        }
+        else Pointing.color = new Color(Pointing.color.r, Pointing.color.g, Pointing.color.b, 0.4f);
+    }
+
+    private void OnMouseExit()
+    {
+        Pointing.color = new Color(Pointing.color.r, Pointing.color.g, Pointing.color.b, 0.4f);
     }
 
 }
