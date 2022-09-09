@@ -14,7 +14,7 @@ public class DragginSystem : MonoBehaviour
     float Distant = 3;
     
     private SpringJoint m_SpringJoint;
-    [SerializeField] Image Pointing;
+    
     
 
     private void Update()
@@ -99,18 +99,5 @@ public class DragginSystem : MonoBehaviour
         return Camera.main;
     }
 
-    private void OnMouseEnter()
-    {
-        if(OnTriggerDoor._OnTriggerDoor)
-        {
-            Pointing.color = new Color(Pointing.color.r, Pointing.color.g, Pointing.color.b, 1f);
-        }
-        else Pointing.color = new Color(Pointing.color.r, Pointing.color.g, Pointing.color.b, 0.4f);
-    }
-
-    private void OnMouseExit()
-    {
-        Pointing.color = new Color(Pointing.color.r, Pointing.color.g, Pointing.color.b, 0.4f);
-    }
 
 }
