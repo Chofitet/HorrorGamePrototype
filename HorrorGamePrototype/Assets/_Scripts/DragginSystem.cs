@@ -11,11 +11,14 @@ public class DragginSystem : MonoBehaviour
     const float k_AngularDrag = 5.0f;
     const float k_Distance = 0.2f;
     const bool k_AttachToCenterOfMass = false;
-    float Distant = 3;
+    OnTriggerDoor triggerDoor;
     
     private SpringJoint m_SpringJoint;
-    
-    
+
+    private void Start()
+    {
+        triggerDoor = GetComponentInChildren<OnTriggerDoor>();
+    }
 
     private void Update()
     {
@@ -25,7 +28,7 @@ public class DragginSystem : MonoBehaviour
             return;
         }
         
-        if (OnTriggerDoor._OnTriggerDoor)
+        if (triggerDoor._OnTriggerDoor)
         { 
                 var mainCamera = FindCamera();
 

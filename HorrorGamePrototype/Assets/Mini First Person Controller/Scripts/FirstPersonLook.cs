@@ -11,6 +11,7 @@ public class FirstPersonLook : MonoBehaviour
     Vector2 frameVelocity;
     public Transform currentview;
     public float transitionSpeed = 2;
+    GravityChange gravityChange;
 
     void Reset()
     {
@@ -21,6 +22,7 @@ public class FirstPersonLook : MonoBehaviour
 
     void Start()
     {
+        gravityChange = GetComponentInParent<GravityChange>();
         // Lock the mouse cursor to the game screen.
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -34,10 +36,19 @@ public class FirstPersonLook : MonoBehaviour
         frameVelocity = Vector2.Lerp(frameVelocity, rawFrameVelocity, 1 / smoothing);
         velocity += frameVelocity;
         velocity.y = Mathf.Clamp(velocity.y, -90, 90);
-
-        // Rotate camera up-down and controller left-right from velocity.
-        transform.localRotation = Quaternion.AngleAxis(-velocity.y, Vector3.right);
-        character.localRotation = Quaternion.AngleAxis(velocity.x, Vector3.up);
+        
+        if (gravityChange._GravityChange == false)
+        {
+            // Rotate camera up-down and controller left-right from velocity.
+            transform.localRotation = Quaternion.AngleAxis(-velocity.y, Vector3.right);
+            character.localRotation = Quaternion.AngleAxis(velocity.x, Vector3.up);
+        }
+        else
+        {
+            transform.localRotation = Quaternion.AngleAxis(velocity.x, Vector3.up);
+            character.localRotation = Quaternion.AngleAxis(velocity.y, Vector3.right);
+        }
+        
     }
 
     private void LateUpdate()
