@@ -11,7 +11,8 @@ public class OnTriggerGravity : MonoBehaviour
     public Transform AuxPlayer;
     [SerializeField] Transform Player;
     RotateRoom room;
-    int zSign = 1;
+    [SerializeField] int zSign = 1;
+    [SerializeField] GameObject OpositeCollider;
 
     private void Start()
     {
@@ -21,24 +22,22 @@ public class OnTriggerGravity : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            
             AuxPlayer = Player;
             _OnTriggerGravity = true;
 
             if(axis == RotateAxis.zAxis)
             {
-                Debug.Log(zSign);
-                room.Rotate( RotateAxis.zAxis);
+                room.Rotate( RotateAxis.zAxis, zSign);
             }
 
-            if (axis == RotateAxis.xAxis)
+            if (axis == RotateAxis.xAxis )
             {
-                room.Rotate( RotateAxis.xAxis);
+                room.Rotate( RotateAxis.xAxis, zSign);
             }
 
             if (axis == RotateAxis.yAxis)
             {
-                room.Rotate( RotateAxis.yAxis);
+                room.Rotate( RotateAxis.yAxis, zSign);
             }
 
         }
@@ -46,7 +45,8 @@ public class OnTriggerGravity : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        
+            OpositeCollider.gameObject.SetActive(true);
+            gameObject.SetActive(false);
     }
 
 

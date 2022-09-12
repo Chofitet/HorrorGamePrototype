@@ -11,7 +11,7 @@ public enum RotateAxis
 public class RotateRoom : MonoBehaviour
 {
     OnTriggerGravity triggerGravity;
-    float speed = 5;
+    float speed = 100;
 
     private void Start()
     {
@@ -26,12 +26,11 @@ public class RotateRoom : MonoBehaviour
              Rotate();
          }
         */
+        Debug.Log(transform.eulerAngles.z);
     }
-    public void Rotate( RotateAxis axis )
+    public void Rotate( RotateAxis axis, int Sign)
     {
-        int zSign = 1;
-        int xSign = 1;
-        int ySign = 1;
+        
         /*if (transform.rotation.z <= 0.70f && transform.rotation.z >= 0)
         {
            transform.RotateAround(triggerGravity.AuxPlayer.position, new Vector3(0, 0, 1), 150 * Time.deltaTime);
@@ -39,38 +38,50 @@ public class RotateRoom : MonoBehaviour
         */
         if (axis == RotateAxis.zAxis)
         {
-            if (transform.eulerAngles.z >= 90)
+            
+            if (Sign == 1)
             {
-                zSign = -1;
+                if (transform.eulerAngles.z <= 90 )
+                {
+                    transform.RotateAround(triggerGravity.AuxPlayer.position, new Vector3(0, 0, Sign), speed * Time.deltaTime);
+                }
             }
-            if (transform.eulerAngles.z <= 90 && transform.eulerAngles.z >= 0)
+            if (Sign == -1)
             {
-                Debug.Log(zSign);
-                transform.RotateAround(triggerGravity.AuxPlayer.position, new Vector3(0, 0, zSign), 150 * Time.deltaTime);
+                if (transform.eulerAngles.z > 3)
+                {
+                    transform.RotateAround(triggerGravity.AuxPlayer.position, new Vector3(0, 0, Sign), speed * Time.deltaTime);
+                }
             }
+
         }
         if (axis == RotateAxis.xAxis)
         {
-            if (transform.eulerAngles.x >= 90)
+            if (Sign == 1)
             {
-                xSign = -1;
+                if (transform.eulerAngles.x <= 90)
+                {
+                    transform.RotateAround(triggerGravity.AuxPlayer.position, new Vector3(Sign, 0, 0), speed * Time.deltaTime);
+                }
             }
-            if (transform.eulerAngles.x <= 90 && transform.eulerAngles.x >= 0)
+            if (Sign == -1)
             {
-                Debug.Log("gira");
-                transform.RotateAround(triggerGravity.AuxPlayer.position, new Vector3(xSign, 0, 0), 150 * Time.deltaTime);
+                if (transform.eulerAngles.x > 3)
+                {
+                    transform.RotateAround(triggerGravity.AuxPlayer.position, new Vector3(Sign, 0, 0), speed * Time.deltaTime);
+                }
             }
         }
         if (axis == RotateAxis.yAxis)
         {
             if (transform.eulerAngles.z <= 50)
             {
-                ySign = 1;
+                
             }
             if (transform.rotation.y <= 0.70f && transform.rotation.y >= 0)
             {
                 Debug.Log("gira");
-                transform.RotateAround(triggerGravity.AuxPlayer.position, new Vector3(0, ySign, 0), 150 * Time.deltaTime);
+                transform.RotateAround(triggerGravity.AuxPlayer.position, new Vector3(0, Sign, 0), 150 * Time.deltaTime);
             }
         }
 
