@@ -22,6 +22,7 @@ public class DragginSystem : MonoBehaviour
 
     private void Update()
     {
+        
         // Make sure the user pressed the mouse down
         if (!Input.GetMouseButtonDown(0))
         {
@@ -29,7 +30,8 @@ public class DragginSystem : MonoBehaviour
         }
         
         if (triggerDoor._OnTriggerDoor)
-        { 
+        {
+            
                 var mainCamera = FindCamera();
 
             // We need to actually hit an object
