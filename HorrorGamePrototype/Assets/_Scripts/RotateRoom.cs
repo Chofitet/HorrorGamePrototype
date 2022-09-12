@@ -7,81 +7,75 @@ public enum RotateAxis
     xAxis,
     yAxis,
     zAxis,
+    NegXAxis,
+    NegYAxis,
+    NegZAxis,
+
 }
 public class RotateRoom : MonoBehaviour
 {
     OnTriggerGravity triggerGravity;
-    float speed = 100;
-
+    float speed = 90;
+    float Degrees;
     private void Start()
     {
         triggerGravity = GetComponentInChildren<OnTriggerGravity>();
-
+        //Teoria de mi Hermana la matemática: unity toma para los quartenions pi = 1. Entonces 2 son 360
     }
 
     private void Update()
     {
-        /* if(triggerGravity._OnTriggerGravity)
-         {
-             Rotate();
-         }
-        */
-        Debug.Log(transform.eulerAngles.z);
     }
     public void Rotate( RotateAxis axis, int Sign)
     {
-        
-        /*if (transform.rotation.z <= 0.70f && transform.rotation.z >= 0)
-        {
-           transform.RotateAround(triggerGravity.AuxPlayer.position, new Vector3(0, 0, 1), 150 * Time.deltaTime);
-        }
-        */
         if (axis == RotateAxis.zAxis)
         {
-            
             if (Sign == 1)
             {
-                if (transform.eulerAngles.z <= 90 )
+                if (transform.rotation.z <= 0.707)
                 {
                     transform.RotateAround(triggerGravity.AuxPlayer.position, new Vector3(0, 0, Sign), speed * Time.deltaTime);
                 }
             }
             if (Sign == -1)
             {
-                if (transform.eulerAngles.z > 3)
+                if (transform.rotation.z > 0.01f)
                 {
                     transform.RotateAround(triggerGravity.AuxPlayer.position, new Vector3(0, 0, Sign), speed * Time.deltaTime);
                 }
             }
 
         }
-        if (axis == RotateAxis.xAxis)
+        if (axis == RotateAxis.yAxis)
         {
             if (Sign == 1)
             {
-                if (transform.eulerAngles.x <= 90)
+                if (transform.rotation.x < 0.495f)
                 {
                     transform.RotateAround(triggerGravity.AuxPlayer.position, new Vector3(Sign, 0, 0), speed * Time.deltaTime);
                 }
             }
             if (Sign == -1)
             {
-                if (transform.eulerAngles.x > 3)
+                if (transform.rotation.x > 0.01f)
                 {
                     transform.RotateAround(triggerGravity.AuxPlayer.position, new Vector3(Sign, 0, 0), speed * Time.deltaTime);
                 }
             }
         }
-        if (axis == RotateAxis.yAxis)
+        if (axis == RotateAxis.xAxis)
         {
-            if (transform.eulerAngles.z <= 50)
+             if (Sign == 1)
             {
                 
+                    transform.RotateAround(triggerGravity.AuxPlayer.position, new Vector3(0, Sign, 0), speed * Time.deltaTime);
+                
             }
-            if (transform.rotation.y <= 0.70f && transform.rotation.y >= 0)
+            if (Sign == -1)
             {
-                Debug.Log("gira");
-                transform.RotateAround(triggerGravity.AuxPlayer.position, new Vector3(0, Sign, 0), 150 * Time.deltaTime);
+                
+                    transform.RotateAround(triggerGravity.AuxPlayer.position, new Vector3(0, Sign, 0), speed * Time.deltaTime);
+                
             }
         }
 

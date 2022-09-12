@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityStandardAssets.Utility;
 
 
 public class OnTriggerGravity : MonoBehaviour
@@ -11,19 +11,19 @@ public class OnTriggerGravity : MonoBehaviour
     public Transform AuxPlayer;
     [SerializeField] Transform Player;
     RotateRoom room;
-    [SerializeField] int zSign = 1;
-    [SerializeField] GameObject OpositeCollider;
+    [SerializeField] int zSign;
+    [SerializeField] GameObject OpositeCollider; 
 
     private void Start()
     {
         room = GetComponentInParent<RotateRoom>();
+
     }
     private void OnTriggerStay  (Collider other)
     {
         if(other.tag == "Player")
         {
             AuxPlayer = Player;
-            _OnTriggerGravity = true;
 
             if(axis == RotateAxis.zAxis)
             {
@@ -39,6 +39,7 @@ public class OnTriggerGravity : MonoBehaviour
             {
                 room.Rotate( RotateAxis.yAxis, zSign);
             }
+
 
         }
     }
