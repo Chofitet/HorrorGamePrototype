@@ -2,25 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OnTriggerDoor : MonoBehaviour
+public class InAreaTrigger : MonoBehaviour
 {
-    public bool _OnTriggerDoor;
-    public static bool PointingDoor { get; set; }
-
+    public bool _OnTriggerArea;
+   
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
-            PointingDoor = true;
-            _OnTriggerDoor = true;
+            _OnTriggerArea = true;
         }
     }
     private void OnTriggerExit(Collider other)
     {
         if (other.tag == "Player")
         {
-            _OnTriggerDoor = false;
-            PointingDoor = false;
+            _OnTriggerArea = false;
 
         }
     }

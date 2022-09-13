@@ -11,23 +11,28 @@ public class DragginSystem : MonoBehaviour
     const float k_AngularDrag = 5.0f;
     const float k_Distance = 0.2f;
     const bool k_AttachToCenterOfMass = false;
-    float Distant = 3;
-    
+    OnTriggerDoor triggerDoor;
+
     private SpringJoint m_SpringJoint;
-    
-    
+
+    private void Start()
+    {
+        triggerDoor = GetComponentInChildren<OnTriggerDoor>();
+    }
 
     private void Update()
     {
+
         // Make sure the user pressed the mouse down
         if (!Input.GetMouseButtonDown(0))
         {
             return;
         }
-        
-        if (OnTriggerDoor._OnTriggerDoor)
-        { 
-                var mainCamera = FindCamera();
+
+        if (triggerDoor._OnTriggerDoor)
+        {
+
+            var mainCamera = FindCamera();
 
             // We need to actually hit an object
             RaycastHit hit = new RaycastHit();
@@ -36,15 +41,15 @@ public class DragginSystem : MonoBehaviour
                                  mainCamera.ScreenPointToRay(Input.mousePosition).direction, out hit, 100,
                                  Physics.DefaultRaycastLayers))
             {
-                
+
                 return;
             }
             // We need to hit a rigidbody that is not kinematic
-           if (!hit.rigidbody || hit.rigidbody.isKinematic)
+            if (!hit.rigidbody || hit.rigidbody.isKinematic)
             {
                 return;
             }
-           
+
             if (!m_SpringJoint)
             {
                 var go = new GameObject("Rigidbody dragger");
@@ -62,7 +67,7 @@ public class DragginSystem : MonoBehaviour
             m_SpringJoint.connectedBody = hit.rigidbody;
 
 
-                StartCoroutine("DragObject", hit.distance);
+            StartCoroutine("DragObject", hit.distance);
 
         }
     }
@@ -76,7 +81,7 @@ public class DragginSystem : MonoBehaviour
         var mainCamera = FindCamera();
         while (Input.GetMouseButton(0))
         {
-            
+
             var ray = mainCamera.ScreenPointToRay(Input.mousePosition);
             m_SpringJoint.transform.position = ray.GetPoint(distance);
             yield return null;
@@ -98,6 +103,8 @@ public class DragginSystem : MonoBehaviour
 
         return Camera.main;
     }
+
+
 
 
 }
