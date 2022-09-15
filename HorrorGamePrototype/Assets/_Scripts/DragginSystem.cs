@@ -12,17 +12,19 @@ public class DragginSystem : MonoBehaviour
     const float k_Distance = 0.2f;
     const bool k_AttachToCenterOfMass = false;
     OnTriggerDoor triggerDoor;
-
+    Rigidbody RB;
+    [SerializeField] Transform StopPoint;
     private SpringJoint m_SpringJoint;
 
     private void Start()
     {
         triggerDoor = GetComponentInChildren<OnTriggerDoor>();
+        RB = GetComponent<Rigidbody>();
     }
-
+    
     private void Update()
     {
-
+       
         // Make sure the user pressed the mouse down
         if (!Input.GetMouseButtonDown(0))
         {
@@ -66,9 +68,25 @@ public class DragginSystem : MonoBehaviour
             m_SpringJoint.maxDistance = k_Distance;
             m_SpringJoint.connectedBody = hit.rigidbody;
 
-
             StartCoroutine("DragObject", hit.distance);
 
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (!m_SpringJoint)
+        {
+            var go = new GameObject("Rigidbody dragger");
+            Rigidbody body = go.AddComponent<Rigidbody>();
+            m_SpringJoint = go.AddComponent<SpringJoint>();
+            body.isKinematic = true;
+        }
+        if (StopPoint.rotation == transform.rotation)
+        {
+            RB.angularVelocity = new Vector3 (0,0,0);
+            RB.velocity= new Vector3(0, 0, 0);
+            transform.rotation = StopPoint.rotation;
         }
     }
 
@@ -92,6 +110,7 @@ public class DragginSystem : MonoBehaviour
             m_SpringJoint.connectedBody.angularDrag = oldAngularDrag;
             m_SpringJoint.connectedBody = null;
         }
+      
     }
 
     private Camera FindCamera()
