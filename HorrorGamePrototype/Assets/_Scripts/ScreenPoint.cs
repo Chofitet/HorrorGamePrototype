@@ -17,15 +17,23 @@ public class ScreenPoint : MonoBehaviour
     void Update()
     {
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
         if (Physics.Raycast(ray, out hit))
         {
-            if(hit.collider.gameObject.tag == "Door" && OnTriggerDoor._OnTriggerDoor)
+
+            if (hit.collider.gameObject.tag == "Door" && OnTriggerDoor.PointingDoor)
             {
                 Pointing.color = new Color(Pointing.color.r, Pointing.color.g, Pointing.color.b, 1f);
             }
+            else if (hit.collider.gameObject.layer == 6 && hit.distance < 1)
+            {
+                Pointing.color = new Color(Pointing.color.r, Pointing.color.g, Pointing.color.b, 1f);
+            }
+
             else Pointing.color = new Color(Pointing.color.r, Pointing.color.g, Pointing.color.b, 0.4f);
+            
         }
 
     }
-   
+
 }
