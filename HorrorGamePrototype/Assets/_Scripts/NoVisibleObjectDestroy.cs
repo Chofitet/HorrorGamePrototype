@@ -7,17 +7,18 @@ public class NoVisibleObjectDestroy : MonoBehaviour
     Transform _transform;
     Camera _camera;
     bool viewed;
+    InAreaTrigger inArea;
 
     // Start is called before the first frame update
     void Start()
     {
-        _transform =  GetComponent<Transform>();
+        _transform = GetComponent<Transform>();
         _camera = FindObjectOfType<Camera>();
+        inArea = GetComponentInChildren<InAreaTrigger>();
     }
-    
-    private void OnTriggerStay(Collider other)
+    private void Update()
     {
-        if (other.tag == "Player")
+        if (inArea._OnTriggerArea)
         {
             Debug.Log("trigger");
             Vector3 screenPoint = _camera.WorldToViewportPoint(_transform.position);
@@ -32,7 +33,6 @@ public class NoVisibleObjectDestroy : MonoBehaviour
             {
                 Destroy(gameObject);
             }
-
         }
     }
 

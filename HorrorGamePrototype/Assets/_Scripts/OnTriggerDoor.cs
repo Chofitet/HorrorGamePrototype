@@ -4,19 +4,16 @@ using UnityEngine;
 
 public class OnTriggerDoor : MonoBehaviour
 {
-    static public bool _OnTriggerDoor {get; private set; }
-    
-    private void Update()
-    {
-        Debug.Log(_OnTriggerDoor);
-    }
+    public bool _OnTriggerDoor;
+    public static bool PointingDoor { get; set; }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
+            PointingDoor = true;
             _OnTriggerDoor = true;
-            Debug.Log(other);
-            Debug.Log(_OnTriggerDoor);
+            Debug.Log("enter");
         }
     }
     private void OnTriggerExit(Collider other)
@@ -24,9 +21,8 @@ public class OnTriggerDoor : MonoBehaviour
         if (other.tag == "Player")
         {
             _OnTriggerDoor = false;
-            Debug.Log(other);
-            Debug.Log(_OnTriggerDoor);
-               
+            PointingDoor = false;
+
         }
     }
 }
