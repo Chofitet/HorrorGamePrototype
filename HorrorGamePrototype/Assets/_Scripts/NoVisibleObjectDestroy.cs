@@ -8,14 +8,15 @@ public class NoVisibleObjectDestroy : MonoBehaviour
     Camera _camera;
     bool viewed;
     InAreaTrigger inArea;
-
     // Start is called before the first frame update
     void Start()
     {
         _transform = GetComponent<Transform>();
         _camera = FindObjectOfType<Camera>();
         inArea = GetComponentInChildren<InAreaTrigger>();
+        
     }
+    
     private void Update()
     {
         if (inArea._OnTriggerArea)
@@ -26,6 +27,7 @@ public class NoVisibleObjectDestroy : MonoBehaviour
 
             if (onScreen)
             {
+                
                 viewed = true;
                 Debug.Log("visto");
             }

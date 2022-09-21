@@ -13,7 +13,6 @@ public class OnTriggerDoor : MonoBehaviour
         {
             PointingDoor = true;
             _OnTriggerDoor = true;
-            Debug.Log("enter");
         }
     }
     private void OnTriggerExit(Collider other)
