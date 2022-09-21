@@ -12,12 +12,20 @@ public class OnTriggerGravity : MonoBehaviour
     [SerializeField] Transform Player;
     RotateRoom room;
     [SerializeField] int zSign;
-    [SerializeField] GameObject OpositeCollider; 
-
+    [SerializeField] GameObject OpositeCollider;
+    public FirstPersonControl firstPerson;
     private void Start()
     {
         room = GetComponentInParent<RotateRoom>();
-
+        firstPerson = FindObjectOfType<FirstPersonControl>();
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            Debug.Log("Enter");
+            firstPerson.enabled = false;
+        }
     }
     private void OnTriggerStay  (Collider other)
     {
@@ -39,15 +47,21 @@ public class OnTriggerGravity : MonoBehaviour
             {
                 room.Rotate( RotateAxis.yAxis, zSign);
             }
-
+            if (axis == RotateAxis.NegZAxis)
+            {
+                room.Rotate(RotateAxis.NegZAxis, zSign);
+            }
 
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
+        if (other.tag == "Player")
+        {
             OpositeCollider.gameObject.SetActive(true);
             gameObject.SetActive(false);
+        }
     }
 
 
