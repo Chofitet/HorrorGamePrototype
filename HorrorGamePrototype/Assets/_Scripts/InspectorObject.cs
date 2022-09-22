@@ -27,8 +27,6 @@ public class InspectorObject : MonoBehaviour
 
     private void Update()
     {
-
-
         //Draw Ray
         Vector3 mousePosition = Input.mousePosition;
         mousePosition.z = 10f;
