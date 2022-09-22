@@ -6,6 +6,8 @@ public class GrabitacionDesaparicion : MonoBehaviour
 {
     [SerializeField] GameObject DesappearObject;
     [SerializeField] GameObject AppearObject;
+    [SerializeField] GameObject Triggers;
+    [SerializeField] Transform TriggersSpot;
     // Start is called before the first frame update
     private void OnTriggerEnter(Collider other)
     {
@@ -13,6 +15,7 @@ public class GrabitacionDesaparicion : MonoBehaviour
         {
             DesappearObject.SetActive(false);
             AppearObject.SetActive(true);
+            Triggers.transform.position = TriggersSpot.position;
         }
     }
 }

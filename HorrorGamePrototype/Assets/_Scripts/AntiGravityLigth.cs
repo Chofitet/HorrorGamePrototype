@@ -10,12 +10,12 @@ public class AntiGravityLigth : MonoBehaviour
     bool isAntiGravity;
     [SerializeField] Transform StopPosition;
     public float fuerza;
-    Light light;
+    [SerializeField] Light Light;
+    [SerializeField] Light Light2;
     private void Start()
     {
         RB = GetComponent<Rigidbody>();
         RB.useGravity = false;
-        light = GetComponentInChildren<Light>();
     }
 
     void Update()
@@ -30,6 +30,7 @@ public class AntiGravityLigth : MonoBehaviour
             {
                 isAntiGravity = true;
                 Debug.Log("Antigravity");
+                StartCoroutine(ApagarLuz());
             }
         }
         if (isAntiGravity)
@@ -40,9 +41,16 @@ public class AntiGravityLigth : MonoBehaviour
                 RB.velocity = Vector3.zero;
                 transform.position = StopPosition.position;
                 isAntiGravity = false;
-                light.gameObject.SetActive(false);
+               
             }
         }
 
+
 }
+    IEnumerator ApagarLuz()
+    {
+        yield return new WaitForSeconds(1f);
+        Light.gameObject.SetActive(false);
+        Light2.gameObject.SetActive(false);
+    }
 }

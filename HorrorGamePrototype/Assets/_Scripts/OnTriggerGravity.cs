@@ -13,12 +13,13 @@ public class OnTriggerGravity : MonoBehaviour
     RotateRoom room;
     [SerializeField] int zSign;
     [SerializeField] GameObject OpositeCollider;
-    public FirstPersonControl firstPerson;
+    FirstPersonControl firstPerson;
     private void Start()
     {
         room = GetComponentInParent<RotateRoom>();
         firstPerson = FindObjectOfType<FirstPersonControl>();
     }
+   
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")

@@ -22,7 +22,7 @@ public class RotateRoom : MonoBehaviour
     {
         firstPersonControl = FindObjectOfType<FirstPersonControl>();
         triggerGravity = GetComponentInChildren<OnTriggerGravity>();
-        //Teoria de mi Hermana la matemática: unity toma para los quartenions pi = 1. Entonces 2 son 360
+        
     }
     private void Update()
     {
