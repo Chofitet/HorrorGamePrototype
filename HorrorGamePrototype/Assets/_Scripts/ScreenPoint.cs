@@ -7,6 +7,7 @@ public class ScreenPoint : MonoBehaviour
     Ray ray;
     RaycastHit hit;
     Image Pointing;
+    public float alpha;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +31,7 @@ public class ScreenPoint : MonoBehaviour
                 Pointing.color = new Color(Pointing.color.r, Pointing.color.g, Pointing.color.b, 1f);
             }
 
-            else Pointing.color = new Color(Pointing.color.r, Pointing.color.g, Pointing.color.b, 0.4f);
+            else Pointing.color = new Color(Pointing.color.r, Pointing.color.g, Pointing.color.b, alpha);
             
         }
 
