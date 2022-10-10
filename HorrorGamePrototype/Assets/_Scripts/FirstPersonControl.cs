@@ -41,9 +41,21 @@ using UnityStandardAssets.Characters.FirstPerson;
         private bool m_Jumping;
         private AudioSource m_AudioSource;
 
-        // Use this for initialization
-        private void Start()
+    [Header("Crouch")]
+    [SerializeField] float CrouchHeight;
+    [SerializeField] float CrouchSpeedUp;
+    [SerializeField] private float StartingCrouchHeight;
+    [SerializeField] float CrouchSpeed;
+    private float auxWalkSpeed;
+    private bool isCrouchingUnder;
+    private bool Crouching;
+    
+    private float CurrentCrouchHeight;
+
+    // Use this for initialization
+    private void Start()
         {
+            auxWalkSpeed = m_WalkSpeed;
             m_CharacterController = GetComponent<CharacterController>();
             m_Camera = Camera.main;
             m_OriginalCameraPosition = m_Camera.transform.localPosition;
@@ -67,7 +79,7 @@ using UnityStandardAssets.Characters.FirstPerson;
                 m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
             }
 
-            if (!m_PreviouslyGrounded && m_CharacterController.isGrounded)
+            if (!m_PreviouslyGrounded && m_CharacterController.isGrounded && !Crouching)
             {
                 StartCoroutine(m_JumpBob.DoBobCycle());
                 PlayLandingSound();
@@ -131,6 +143,8 @@ using UnityStandardAssets.Characters.FirstPerson;
             UpdateCameraPosition(speed);
 
             m_MouseLook.UpdateCursorLock();
+
+            Crouch();
         }
 
 
@@ -216,6 +230,10 @@ using UnityStandardAssets.Characters.FirstPerson;
 #endif
             // set the desired speed to be walking or running
             speed = m_IsWalking ? m_WalkSpeed : m_RunSpeed;
+            if (Crouching)
+            {
+                speed = m_WalkSpeed;
+            }
             m_Input = new Vector2(horizontal, vertical);
 
             // normalize input if it exceeds 1 in combined length:
@@ -255,5 +273,62 @@ using UnityStandardAssets.Characters.FirstPerson;
             }
             body.AddForceAtPosition(m_CharacterController.velocity * 0.1f, hit.point, ForceMode.Impulse);
         }
+
+        private void Crouch()
+        {
+            
+            m_CharacterController.height = StartingCrouchHeight + CurrentCrouchHeight;
+
+
+            if (CurrentCrouchHeight < CrouchHeight)
+            {
+                CurrentCrouchHeight = CrouchHeight;
+            }
+            if (CurrentCrouchHeight > 0)
+            {
+                CurrentCrouchHeight = 0;
+            }
+
+            float rayHeight;
+            if (Crouching) rayHeight = 1;
+            else rayHeight = 0;
+            if (Physics.Raycast(m_Camera.transform.position, Vector3.up, rayHeight))
+            {
+                isCrouchingUnder = true;
+            }
+            else isCrouchingUnder = false;
+                Debug.DrawRay(m_Camera.transform.position, Vector3.up * rayHeight);
+
+        if (Input.GetKey(KeyCode.LeftControl))
+            {
+                Debug.Log("agachado");
+                if (CurrentCrouchHeight != CrouchHeight)
+                {
+                    CurrentCrouchHeight -= CrouchSpeedUp * Time.deltaTime;
+                    m_CharacterController.center = new Vector3(m_CharacterController.center.x, -CrouchHeight / 2, m_CharacterController.center.z);
+
+                 }
+                
+                m_WalkSpeed = CrouchSpeed;
+                Crouching = true;
+            }
+
+            else
+            {
+                if (!isCrouchingUnder)
+                {
+                    Debug.Log("no agachado");
+                    if (CurrentCrouchHeight < 0)
+                    {
+                        CurrentCrouchHeight += CrouchSpeedUp * Time.deltaTime;
+                        m_CharacterController.center = new Vector3(m_CharacterController.center.x, 0, m_CharacterController.center.z);
+                        GetComponent<Rigidbody>().AddForce(Vector3.up * 0.01f, ForceMode.Impulse);
+                    }
+                    m_WalkSpeed = auxWalkSpeed;
+                    Crouching = false;
+                }
+            }
+
+    }
     }
 
