@@ -18,11 +18,11 @@ public class ScreenPoint : MonoBehaviour
     void Update()
     {
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
+        
         if (Physics.Raycast(ray, out hit))
         {
 
-            if (hit.collider.gameObject.tag == "Door" && OnTriggerDoor.PointingDoor)
+            if (hit.collider.gameObject.tag == "Door" && hit.distance < 2)
             {
                 Pointing.color = new Color(Pointing.color.r, Pointing.color.g, Pointing.color.b, 1f);
             }
