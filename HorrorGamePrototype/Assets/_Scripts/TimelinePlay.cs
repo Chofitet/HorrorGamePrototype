@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Playables;
 public class TimelinePlay : MonoBehaviour
 {
-    private PlayableDirector director; 
+    public PlayableDirector director; 
     public GameObject controlPanel; 
     private void Awake() 
 
