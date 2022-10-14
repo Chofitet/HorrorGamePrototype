@@ -305,7 +305,7 @@ using UnityStandardAssets.Characters.FirstPerson;
                 if (CurrentCrouchHeight != CrouchHeight)
                 {
                     CurrentCrouchHeight -= CrouchSpeedUp * Time.deltaTime;
-                    m_CharacterController.center = new Vector3(m_CharacterController.center.x, -CrouchHeight / 4, m_CharacterController.center.z);
+                    m_CharacterController.center = new Vector3(m_CharacterController.center.x, -CrouchHeight / 6, m_CharacterController.center.z);
 
                  }
                 
