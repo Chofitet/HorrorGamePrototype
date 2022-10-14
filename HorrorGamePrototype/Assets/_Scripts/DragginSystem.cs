@@ -92,9 +92,22 @@ public class DragginSystem : MonoBehaviour
         float offsetStopPoint = Mathf.Abs(StopPoint.localRotation.z - transform.localRotation.z);
         if (!m_SpringJoint)
         {
-            var go = new GameObject("Rigidbody dragger");
-            Rigidbody body = go.AddComponent<Rigidbody>();
-            m_SpringJoint = go.AddComponent<SpringJoint>();
+            GameObject go;
+            Rigidbody body;
+
+            if (GameObject.Find("Rigidbody dragger"))
+            {
+                go = GameObject.Find("Rigidbody dragger");
+                body = go.GetComponent<Rigidbody>();
+                m_SpringJoint = go.GetComponent<SpringJoint>();
+            }
+            else
+            {
+                go = new GameObject("Rigidbody dragger");
+                body = go.AddComponent<Rigidbody>();
+                m_SpringJoint = go.AddComponent<SpringJoint>();
+            }
+
             body.isKinematic = true;
         }
         if (offsetStopPoint < 0.02 && offsetStopPoint > 0 && !isClosetoDoor)
