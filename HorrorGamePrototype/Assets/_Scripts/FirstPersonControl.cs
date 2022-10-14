@@ -147,7 +147,6 @@ using UnityStandardAssets.Characters.FirstPerson;
             Crouch();
         }
 
-
         private void PlayJumpSound()
         {
             m_AudioSource.clip = m_JumpSound;
