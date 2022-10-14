@@ -7,6 +7,7 @@ TagManager:
   - Door
   - GrabbedObject
   - AntiGravityLigth
+  - PortalDoor
   layers:
   - Default
   - TransparentFX

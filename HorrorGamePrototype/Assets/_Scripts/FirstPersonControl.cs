@@ -305,7 +305,7 @@ using UnityStandardAssets.Characters.FirstPerson;
                 if (CurrentCrouchHeight != CrouchHeight)
                 {
                     CurrentCrouchHeight -= CrouchSpeedUp * Time.deltaTime;
-                    m_CharacterController.center = new Vector3(m_CharacterController.center.x, -CrouchHeight / 2, m_CharacterController.center.z);
+                    m_CharacterController.center = new Vector3(m_CharacterController.center.x, -CrouchHeight / 4, m_CharacterController.center.z);
 
                  }
                 
@@ -322,7 +322,7 @@ using UnityStandardAssets.Characters.FirstPerson;
                     {
                         CurrentCrouchHeight += CrouchSpeedUp * Time.deltaTime;
                         m_CharacterController.center = new Vector3(m_CharacterController.center.x, 0, m_CharacterController.center.z);
-                        GetComponent<Rigidbody>().AddForce(Vector3.up * 0.01f, ForceMode.Impulse);
+                        GetComponent<Rigidbody>().AddForce(Vector3.up * 0.01f, ForceMode.Force);
                     }
                     m_WalkSpeed = auxWalkSpeed;
                     Crouching = false;
