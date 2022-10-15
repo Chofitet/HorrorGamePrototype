@@ -166,12 +166,12 @@ public class DragginSystem : MonoBehaviour
         {
             if (dirSing == -1)
             {
-                RB.AddForce(StopPoint.transform.position * ForceOpen);
+                RB.AddForce(StopPoint.transform.position * -ForceOpen);
             }
 
             if (dirSing == 1)
             {
-                RB.AddForce(StopPoint.transform.position * -ForceOpen);
+                RB.AddForce(StopPoint.transform.position * ForceOpen);
             }
             pulled = true;
         }

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class ThroughTheDoor : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class ThroughTheDoor : MonoBehaviour
     [SerializeField] GameObject FPContoller;
     FirstPersonControl firstPersonControl;
     int FPPriority;
+    [SerializeField] private MouseLook m_MouseLook;
     Camera camera;
     [SerializeField] Transform LookAt;
     private void Start()
@@ -55,7 +57,7 @@ public class ThroughTheDoor : MonoBehaviour
         timeline.StartTimeline();
         BrainCam.m_DefaultBlend.m_Time = 0.01f;
         FPContoller.transform.position = vector3;
-        camera.transform.LookAt(LookAt);
+        FPCam.transform.LookAt(LookAt);
         yield return new WaitForSeconds(duration - 0.1f);
         Cam2.m_Priority = 12;
         firstPersonControl.enabled = true;
