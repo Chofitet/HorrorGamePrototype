@@ -12,6 +12,7 @@ public class TimelinePlay : MonoBehaviour
         director.played += Director_Played; 
         director.stopped += Director_Stopped; 
     }
+
     private void Director_Stopped(PlayableDirector obj) 
     {
         PortalDoorTrigger.PlayTime = true;
