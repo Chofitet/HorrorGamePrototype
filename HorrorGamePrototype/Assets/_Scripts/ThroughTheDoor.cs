@@ -7,23 +7,31 @@ using UnityStandardAssets.Characters.FirstPerson;
 
 public class ThroughTheDoor : MonoBehaviour
 {
-    [SerializeField] TimelinePlay timeline;
-    [SerializeField] CinemachineBrain BrainCam;
-    [SerializeField] CinemachineVirtualCamera FPCam;
+    TimelinePlay timeline;
+    CinemachineBrain BrainCam;
+    CinemachineVirtualCamera FPCam;
+    GameObject FPContoller;
     [SerializeField] CinemachineVirtualCamera Cam2;
-    [SerializeField] GameObject FPContoller;
+    [SerializeField] CinemachineVirtualCamera Cam1;
+    [SerializeField] GameObject NivelAnterior;
+    [SerializeField] GameObject NivelSiguiente;
+
     FirstPersonControl firstPersonControl;
     int FPPriority;
-    [SerializeField] private MouseLook m_MouseLook;
     Camera camera;
-    [SerializeField] Transform LookAt;
-    private void Start()
-    {
-       // Cam2 = GetComponentInChildren<CinemachineVirtualCamera>();
-        camera = Camera.main;
-        firstPersonControl = FindObjectOfType<FirstPersonControl>();
-    }
 
+    private void OnEnable()
+    {
+        camera = Camera.main;
+        FPContoller = GameObject.Find("FPSController");
+        firstPersonControl = FPContoller.GetComponent<FirstPersonControl>();
+        FPCam = FPContoller.GetComponentInChildren<CinemachineVirtualCamera>();
+        timeline = GetComponentInChildren<TimelinePlay>();
+        BrainCam = FindObjectOfType<CinemachineBrain>();
+        if (NivelAnterior == null) NivelAnterior = new GameObject("Nivel Anterior");
+        if (NivelSiguiente == null) NivelSiguiente = new GameObject("Nivel Siguiente");
+
+    }
     private void Update()
     {
         Ray ray = camera.ScreenPointToRay(Input.mousePosition);
@@ -48,21 +56,29 @@ public class ThroughTheDoor : MonoBehaviour
     IEnumerator corrutina()
     {
         Vector3 vector3 = FPContoller.transform.position;
-
         float duration = Convert.ToInt32(timeline.director.duration);
+
         yield return new WaitForSeconds(1.5f);
+        
         firstPersonControl.enabled = false;
         vector3.x = Cam2.transform.position.x;
         vector3.z = Cam2.transform.position.z;
         timeline.StartTimeline();
+        float auxblend = BrainCam.m_DefaultBlend.m_Time;
         BrainCam.m_DefaultBlend.m_Time = 0.01f;
         FPContoller.transform.position = vector3;
-        FPCam.transform.LookAt(LookAt);
         yield return new WaitForSeconds(duration - 0.1f);
+        NivelAnterior.SetActive(false);
+        NivelSiguiente.SetActive(true);
         Cam2.m_Priority = 12;
         firstPersonControl.enabled = true;
-        
-        
+        transform.Find("Door").gameObject.tag = "Untagged";
         FPCam.m_Priority = FPPriority;
+
+        Cam1.gameObject.SetActive(false);
+        Cam2.gameObject.SetActive(false);
+        timeline.gameObject.SetActive(false);
+        yield return new WaitForSeconds(duration + 0.5f);
+        BrainCam.m_DefaultBlend.m_Time = auxblend;
     }
 }
