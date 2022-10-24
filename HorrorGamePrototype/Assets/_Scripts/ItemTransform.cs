@@ -10,8 +10,10 @@ public class ItemTransform : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
-            float x = Input.GetAxis("Mouse X") * Speed * Time.deltaTime;
-            float y = Input.GetAxis("Mouse Y") * Speed * Time.deltaTime;
+            float y = transform.rotation.y;
+            float x = transform.rotation.x;
+            x = Input.GetAxis("Mouse X") * Speed * Time.deltaTime;
+            y = Input.GetAxis("Mouse Y") * Speed * Time.deltaTime;
             InspectorObject.CurrentObject.transform.Rotate(-Vector3.up * x, Space.World);
             InspectorObject.CurrentObject.transform.Rotate(-Vector3.forward * y, Space.World);
         }
