@@ -48,7 +48,7 @@ using UnityStandardAssets.Characters.FirstPerson;
     [SerializeField] float CrouchSpeed;
     private float auxWalkSpeed;
     private bool isCrouchingUnder;
-    private bool Crouching;
+    public bool Crouching;
     
     private float CurrentCrouchHeight;
 

@@ -18,17 +18,13 @@ public class RotateRoom : MonoBehaviour
     public float speed = 90;
     float Degrees;
     FirstPersonControl firstPersonControl;
+    public bool rotando;
     private void Start()
     {
         firstPersonControl = FindObjectOfType<FirstPersonControl>();
         triggerGravity = GetComponentInChildren<OnTriggerGravity>();
         
     }
-    private void Update()
-    {
-        Debug.Log(transform.rotation.y);
-    }
-
     public void Rotate( RotateAxis axis, int Sign)
     {
         StartCoroutine(Girando());
@@ -104,10 +100,14 @@ public class RotateRoom : MonoBehaviour
 
 
     }
-   IEnumerator Girando ()
+    IEnumerator Girando ()
     {
+        rotando = true;
         yield return new WaitForSeconds(0.5f);
         firstPersonControl.enabled = true;
+        yield return new WaitForSeconds(0.5f);
+        rotando = false;
+
     }
   
 
