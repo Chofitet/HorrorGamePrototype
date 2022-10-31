@@ -29,7 +29,6 @@ public class DisappearWallSystem : MonoBehaviour
             if (trigger1.GetComponent<Enter_ExitTrigger>()._EnterTrigger)
             {
                 Pared.gameObject.SetActive(true);
-                trigger1.gameObject.SetActive(true);
                 trigger1.gameObject.SetActive(false);
                 trigger2.gameObject.SetActive(true);
             }

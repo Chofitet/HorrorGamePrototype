@@ -35,7 +35,6 @@ public class SeeObjectAppearsOther : MonoBehaviour
                     ObjectToDisappear = new GameObject("ObjectToDisappear");
                 }
 
-                Debug.Log("ObjectToDisappear");
                 ObjectToDisappear.SetActive(false);
             }
         }

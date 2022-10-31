@@ -32,7 +32,6 @@ public class NoVisibleObjectDisappear : MonoBehaviour
         if (onScreen && areaTrigger.GetComponent<InAreaTrigger>()._OnTriggerArea && trigger2._ExitTrigger)
         {
             Pared.gameObject.SetActive(true);
-            Debug.Log("qa");
             ParedDesaparecida = true;
             Baño.SetActive(true);
             HabitacionDesaparece.SetActive(true);
