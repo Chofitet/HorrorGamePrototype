@@ -11,6 +11,7 @@ public class NoVisibleObjectTeleport : MonoBehaviour
     [SerializeField]Transform[] _spots;
     int index;
     [SerializeField] Transform Player;
+    [SerializeField] bool LookAt;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,14 +31,13 @@ public class NoVisibleObjectTeleport : MonoBehaviour
             if (onScreen)
             {
                 viewed = true;
-                Debug.Log("VIEWED");
             }
             else if (onScreen == false && viewed)
             {
-
                 viewed = false;
                 transform.position = _spots[index].position;
-                transform.LookAt(Player);
+                transform.rotation = _spots[index].rotation;
+                if (LookAt) transform.LookAt(Player);
                 index++;
             }
         }

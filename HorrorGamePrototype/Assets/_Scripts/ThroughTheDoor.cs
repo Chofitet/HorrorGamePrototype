@@ -7,6 +7,7 @@ using UnityStandardAssets.Characters.FirstPerson;
 
 public class ThroughTheDoor : MonoBehaviour
 {
+
     TimelinePlay timeline;
     CinemachineBrain BrainCam;
     CinemachineVirtualCamera FPCam;
@@ -16,6 +17,7 @@ public class ThroughTheDoor : MonoBehaviour
     [SerializeField] GameObject NivelAnterior;
     [SerializeField] GameObject NivelSiguiente;
 
+
     FirstPersonControl firstPersonControl;
     int FPPriority;
     Camera camera;
@@ -23,9 +25,6 @@ public class ThroughTheDoor : MonoBehaviour
     private void OnEnable()
     {
         camera = Camera.main;
-        FPContoller = GameObject.Find("FPSController");
-        firstPersonControl = FPContoller.GetComponent<FirstPersonControl>();
-        FPCam = FPContoller.GetComponentInChildren<CinemachineVirtualCamera>();
         timeline = GetComponentInChildren<TimelinePlay>();
         BrainCam = FindObjectOfType<CinemachineBrain>();
         if (NivelAnterior == null) NivelAnterior = new GameObject("Nivel Anterior");
@@ -41,15 +40,18 @@ public class ThroughTheDoor : MonoBehaviour
         {
             if (hit.collider.tag == "PortalDoor")
             {
-                Debug.Log(hit.collider);
                 ActivePortal();
             }
         }
     }
     public void ActivePortal()
     {
+        FPContoller = GameObject.Find("FPSController");
+        firstPersonControl = FPContoller.GetComponent<FirstPersonControl>();
+        FPCam = FPContoller.GetComponentInChildren<CinemachineVirtualCamera>();
+        FPPriority = 15;
         StartCoroutine(corrutina());
-        FPPriority = FPCam.m_Priority;
+
         FPCam.m_Priority = 1;
     }
 
@@ -59,7 +61,7 @@ public class ThroughTheDoor : MonoBehaviour
         float duration = Convert.ToInt32(timeline.director.duration);
 
         yield return new WaitForSeconds(1.5f);
-        
+        NivelSiguiente.SetActive(true);
         firstPersonControl.enabled = false;
         vector3.x = Cam2.transform.position.x;
         vector3.z = Cam2.transform.position.z;
@@ -68,8 +70,8 @@ public class ThroughTheDoor : MonoBehaviour
         BrainCam.m_DefaultBlend.m_Time = 0.01f;
         FPContoller.transform.position = vector3;
         yield return new WaitForSeconds(duration - 0.1f);
-        NivelAnterior.SetActive(false);
-        NivelSiguiente.SetActive(true);
+
+
         Cam2.m_Priority = 12;
         firstPersonControl.enabled = true;
         transform.Find("Door").gameObject.tag = "Untagged";
@@ -77,8 +79,11 @@ public class ThroughTheDoor : MonoBehaviour
 
         Cam1.gameObject.SetActive(false);
         Cam2.gameObject.SetActive(false);
+        NivelSiguiente.transform.Find("PortalDoor").gameObject.SetActive(true);
+        yield return new WaitForSeconds(0.2f);
+        Debug.Log("paso de nivel");
+        BrainCam.m_DefaultBlend.m_Time = 1.5f;
         timeline.gameObject.SetActive(false);
-        yield return new WaitForSeconds(duration + 0.5f);
-        BrainCam.m_DefaultBlend.m_Time = auxblend;
+        NivelAnterior.SetActive(false);
     }
 }

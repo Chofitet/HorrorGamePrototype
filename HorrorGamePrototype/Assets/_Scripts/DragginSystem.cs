@@ -18,6 +18,8 @@ public class DragginSystem : MonoBehaviour
     Transform Player;
     [SerializeField] Transform StopPoint;
     private SpringJoint m_SpringJoint;
+    NeedOtherObject needOtherObject;
+    bool auxneedOtherObject;
 
     private void Start()
     {
@@ -34,16 +36,26 @@ public class DragginSystem : MonoBehaviour
         }
         else isClosetoDoor = false;
 
+        if (RB.isKinematic == true)
+        {
+            needOtherObject = GetComponent<NeedOtherObject>();
+            if (needOtherObject.objectUsed)
+            {
+                RB.isKinematic = false;
+            }
+        }
         // Make sure the user pressed the mouse down
         if (!Input.GetMouseButtonDown(0))
         {
             return;
         }
 
+        
+
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hitDistant;
 
-        if (Physics.Raycast(ray, out hitDistant, 2))
+            if (Physics.Raycast(ray, out hitDistant, 2))
             {
                 var mainCamera = FindCamera();
                 Debug.Log(mainCamera);
@@ -81,7 +93,8 @@ public class DragginSystem : MonoBehaviour
                 m_SpringJoint.connectedBody = hit.rigidbody;
 
                 StartCoroutine("DragObject", hit.distance);
-            } 
+            
+        }
 
             
         

@@ -8,6 +8,8 @@ TagManager:
   - GrabbedObject
   - AntiGravityLigth
   - PortalDoor
+  - Object
+  - NeedObject
   layers:
   - Default
   - TransparentFX
@@ -16,8 +18,8 @@ TagManager:
   - Water
   - UI
   - InspectionObject
-  - 
-  - 
+  - NeedObject
+  - Object
   - 
   - 
   - 
