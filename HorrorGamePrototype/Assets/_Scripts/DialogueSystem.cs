@@ -32,11 +32,7 @@ public class DialogueSystem : MonoBehaviour
                 }
             }
         }
-
-        
-
     }
-
     IEnumerator DialogueColdDown ()
     {
         yield return new WaitForSeconds(3);

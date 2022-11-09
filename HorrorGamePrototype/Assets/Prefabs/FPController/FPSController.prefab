@@ -297,6 +297,7 @@ GameObject:
   - component: {fileID: 3967835741429077446}
   - component: {fileID: 3967835741426675527}
   - component: {fileID: 3967835741429077447}
+  - component: {fileID: 1070144434618412418}
   m_Layer: 0
   m_Name: FPSController
   m_TagString: Player
@@ -468,6 +469,7 @@ MonoBehaviour:
   CrouchSpeedUp: 5
   StartingCrouchHeight: 1.68
   CrouchSpeed: 0.75
+  Crouching: 0
 --- !u!54 &3967835741426675527
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -580,6 +582,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &1070144434618412418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3967835741421440039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c19189d622fac514e9a109ead60beacf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IMGinventory: {fileID: 0}
+  IMGinventaryObject: {fileID: 0}
+  IMGKey: {fileID: 21300000, guid: a3983c59ebf804b4abba687bd7c9e92f, type: 3}
+  InScreen: {fileID: 0}
+  HudSpeed: 3
 --- !u!1 &3967835741534547659
 GameObject:
   m_ObjectHideFlags: 0

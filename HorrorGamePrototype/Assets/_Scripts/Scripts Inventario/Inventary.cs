@@ -1,35 +1,65 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Inventary : MonoBehaviour
 {
-    private List<ObjectType> inventory;
+    private List<ObjectType> inventary;
+    [SerializeField] GameObject IMGinventory;
+    [SerializeField] Image IMGinventaryObject;
+    [SerializeField] Sprite IMGKey;
+    [SerializeField] Sprite IMGNull;
 
+    [SerializeField] Transform OutsideScreen;
+    bool inInventary;
+    [SerializeField] Transform InScreen;
+    [SerializeField] float HudSpeed;
 
-
-    private void Awake()
+    private void Start()
     {
-        inventory = new List<ObjectType>();
+            enabled = true;
+            inventary = new List<ObjectType>();
     }
+
 
     public void AddObject(ObjectType Object)
     {
-        inventory.Add(Object);
+        inventary.Add(Object);
+        StartCoroutine(HUDColdDown());
+        RefreshHud();
     }
     public void RemoveObject(ObjectType Object)
     {
-        inventory.Remove(Object);
+        inventary.Remove(Object);
+        
     }
 
     public bool ContainsObject(ObjectType Object)
     {
-        return inventory.Contains(Object);
+        return inventary.Contains(Object);
     }
 
     private void Update()
     {
+        Transform auxposition; 
+        auxposition = OutsideScreen;
         CheckInteract();
+        if (Input.GetKey(KeyCode.E) )
+        {
+            Debug.Log("Inventario");
+
+            StartCoroutine(HUDColdDown());
+            RefreshHud();
+        }
+
+        if (!inInventary)
+        {
+            auxposition = OutsideScreen;
+
+        } else auxposition = InScreen;
+
+        IMGinventory.transform.position = Vector3.Lerp(IMGinventory.transform.position, auxposition.position, HudSpeed * Time.deltaTime);
     }
 
     void CheckInteract ()
@@ -59,11 +89,28 @@ public class Inventary : MonoBehaviour
                     if (ContainsObject(obj.GetObjectType()))
                     {
                         obj.ObjectUsed();
+                        RemoveObject(obj.GetObjectType());
+                        RefreshHud();
                     }
                 }
             }
         }
-       
+
+    }
+    void RefreshHud()
+    {
+        if (inventary.Contains(ObjectType.Key))
+        {
+            IMGinventaryObject.sprite = IMGKey;
+        }
+        else IMGinventaryObject.sprite = IMGNull;
+    }
+
+    IEnumerator HUDColdDown()
+    {
+        inInventary = true;
+        yield return new WaitForSeconds(3f);
+        inInventary = false;
     }
 
 }
