@@ -8,14 +8,19 @@ public class Inventary : MonoBehaviour
     private List<ObjectType> inventary;
     [SerializeField] GameObject IMGinventory;
     [SerializeField] Image IMGinventaryObject;
-    [SerializeField] Sprite IMGKey;
-    [SerializeField] Sprite IMGNull;
-
     [SerializeField] Transform OutsideScreen;
     bool inInventary;
     [SerializeField] Transform InScreen;
     [SerializeField] float HudSpeed;
 
+    [Header("Image Items")] 
+    
+    [SerializeField] Sprite IMGNull;
+    [SerializeField] Sprite IMGglass;
+    [SerializeField] Sprite IMGglassdarkstuff;
+    [SerializeField] Sprite IMGglasswater;
+
+   
     private void Start()
     {
             enabled = true;
@@ -45,10 +50,9 @@ public class Inventary : MonoBehaviour
         Transform auxposition; 
         auxposition = OutsideScreen;
         CheckInteract();
-        if (Input.GetKey(KeyCode.E) )
-        {
-            Debug.Log("Inventario");
 
+        if (Input.GetKey(KeyCode.Tab) )
+        {
             StartCoroutine(HUDColdDown());
             RefreshHud();
         }
@@ -78,7 +82,11 @@ public class Inventary : MonoBehaviour
                 if (obj != null)
                 {
                     AddObject(obj.GetObjectType());
-                    Destroy(obj.gameObject);
+                    RefreshHud();
+                    if (obj.gameObject.tag != "GivesObject")
+                    {
+                        Destroy(obj.gameObject);
+                    }
                 }
             }
             if (hit.collider.gameObject.layer == 7)
@@ -99,9 +107,17 @@ public class Inventary : MonoBehaviour
     }
     void RefreshHud()
     {
-        if (inventary.Contains(ObjectType.Key))
+        if (inventary.Contains(ObjectType.glass))
         {
-            IMGinventaryObject.sprite = IMGKey;
+            IMGinventaryObject.sprite = IMGglass;
+        }
+        else if (inventary.Contains(ObjectType.glassdarkstuff))
+        {
+            IMGinventaryObject.sprite = IMGglassdarkstuff;
+        }
+        else if (inventary.Contains(ObjectType.glasswater))
+        {
+            IMGinventaryObject.sprite = IMGglasswater;
         }
         else IMGinventaryObject.sprite = IMGNull;
     }

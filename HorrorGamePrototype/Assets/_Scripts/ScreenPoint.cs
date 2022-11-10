@@ -26,7 +26,7 @@ public class ScreenPoint : MonoBehaviour
             {
                 Pointing.color = new Color(Pointing.color.r, Pointing.color.g, Pointing.color.b, 1f);
             }
-            else if (hit.collider.gameObject.layer == 6 && hit.distance < 1)
+            else if (hit.collider.gameObject.layer == 6 && hit.distance < 1 && FindObjectOfType<FirstPersonControl>().isActiveAndEnabled)
             {
                 Pointing.color = new Color(Pointing.color.r, Pointing.color.g, Pointing.color.b, 1f);
             }

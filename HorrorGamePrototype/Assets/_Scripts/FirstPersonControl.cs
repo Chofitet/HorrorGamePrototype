@@ -318,7 +318,6 @@ using UnityStandardAssets.Characters.FirstPerson;
             {
                 if (!isCrouchingUnder)
                 {
-                    Debug.Log("no agachado");
                     if (CurrentCrouchHeight < 0)
                     {
                         CurrentCrouchHeight += CrouchSpeedUp * Time.deltaTime;

@@ -10,6 +10,7 @@ TagManager:
   - PortalDoor
   - Object
   - NeedObject
+  - GivesObject
   layers:
   - Default
   - TransparentFX

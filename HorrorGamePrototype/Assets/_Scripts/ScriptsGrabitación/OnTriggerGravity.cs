@@ -16,6 +16,7 @@ public class OnTriggerGravity : MonoBehaviour
     Camera _camera;
     Collider collider;
     bool onTrigger;
+    bool OnEnterOnScreen;
     private void Start()
     {
         _camera = Camera.main;
@@ -38,8 +39,10 @@ public class OnTriggerGravity : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        if (GetComponentInChildren<OnScreen>().onScreen) OnEnterOnScreen = true;
+
         room.AsignScript(GetComponent<OnTriggerGravity>());
-        if (other.tag == "Player")
+        if (other.tag == "Player" && OnEnterOnScreen)
         {
             onTrigger = true;
             firstPerson.enabled = false;
@@ -48,7 +51,7 @@ public class OnTriggerGravity : MonoBehaviour
     private void OnTriggerStay  (Collider other)
     {
        
-        if (!firstPerson.Crouching )
+        if (!firstPerson.Crouching && OnEnterOnScreen)
         {
             if (other.tag == "Player")
             {
@@ -95,6 +98,7 @@ public class OnTriggerGravity : MonoBehaviour
             gameObject.SetActive(false);
             OpositeCollider.gameObject.SetActive(true);
         }
+        OnEnterOnScreen = false;
     }
 
 

@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 public enum ObjectType
 {
-    Key,
+    glassdarkstuff,
+    glass,
+    glasswater,
 }
 
 public class TypeObject : MonoBehaviour
