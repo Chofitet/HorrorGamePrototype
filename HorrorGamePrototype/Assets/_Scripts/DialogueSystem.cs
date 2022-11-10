@@ -62,5 +62,7 @@ public class DialogueSystem : MonoBehaviour
         {
             CommentaryNumber = 3;
         }
+
+
     }
 }

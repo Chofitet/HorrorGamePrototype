@@ -12,7 +12,6 @@ public class Inventary : MonoBehaviour
     bool inInventary;
     [SerializeField] Transform InScreen;
     [SerializeField] float HudSpeed;
-
     [Header("Image Items")] 
     
     [SerializeField] Sprite IMGNull;
@@ -83,10 +82,7 @@ public class Inventary : MonoBehaviour
                 {
                     AddObject(obj.GetObjectType());
                     RefreshHud();
-                    if (obj.gameObject.tag != "GivesObject")
-                    {
-                        Destroy(obj.gameObject);
-                    }
+                    Destroy(obj.gameObject);
                 }
             }
             if (hit.collider.gameObject.layer == 7)
@@ -99,6 +95,16 @@ public class Inventary : MonoBehaviour
                         obj.ObjectUsed();
                         RemoveObject(obj.GetObjectType());
                         RefreshHud();
+
+                        if (obj.NeedAndGivesObject)
+                        {
+                            TypeObject ob = hit.collider.GetComponent<TypeObject>();
+                            if (ob != null)
+                            {
+                                AddObject(ob.GetObjectType());
+                                RefreshHud();
+                            }
+                        }
                     }
                 }
             }

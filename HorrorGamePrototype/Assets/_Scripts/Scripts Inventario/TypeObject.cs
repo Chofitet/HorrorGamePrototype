@@ -16,4 +16,8 @@ public class TypeObject : MonoBehaviour
     {
         return objectType;
     }
+    private void Update()
+    {
+
+    }
 }

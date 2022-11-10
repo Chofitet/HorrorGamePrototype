@@ -29,7 +29,7 @@ public class OnTriggerGravity : MonoBehaviour
     {
         if (!room.rotando)
         {
-            if ((!GetComponentInChildren<OnScreen>().onScreen || firstPerson.Crouching) && !onTrigger)
+            if ((!GetComponentInChildren<MultipleTrigger>().onTrigger || firstPerson.Crouching) && !onTrigger)
             {
                 collider.enabled = false;
             }
@@ -39,7 +39,7 @@ public class OnTriggerGravity : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (GetComponentInChildren<OnScreen>().onScreen) OnEnterOnScreen = true;
+        if (GetComponentInChildren<MultipleTrigger>().onTrigger) OnEnterOnScreen = true;
 
         room.AsignScript(GetComponent<OnTriggerGravity>());
         if (other.tag == "Player" && OnEnterOnScreen)

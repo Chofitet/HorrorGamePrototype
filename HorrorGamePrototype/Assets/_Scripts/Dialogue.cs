@@ -17,4 +17,8 @@ public class Dialogue : MonoBehaviour
         else if (NC == 2) Dialogue.text = Texto2;
         else if (NC == 3) Dialogue.text = Texto3;
     }
+    private void Update()
+    {
+
+    }
 }
