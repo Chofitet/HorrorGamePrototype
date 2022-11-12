@@ -14,6 +14,7 @@ public class OnTriggerGravity : MonoBehaviour
     [SerializeField] GameObject OpositeCollider;
     FirstPersonControl firstPerson;
     Camera _camera;
+    MultipleTrigger PointToSee; 
     Collider collider;
     bool onTrigger;
     bool OnEnterOnScreen;
@@ -23,13 +24,14 @@ public class OnTriggerGravity : MonoBehaviour
         room = GetComponentInParent<RotateRoom>();
         firstPerson = FindObjectOfType<FirstPersonControl>();
         collider = GetComponent<Collider>();
+        PointToSee = GetComponentInChildren<MultipleTrigger>();
     }
 
     private void Update()
     {
         if (!room.rotando)
         {
-            if ((!GetComponentInChildren<MultipleTrigger>().onTrigger || firstPerson.Crouching) && !onTrigger)
+            if ((!PointToSee.onTrigger || firstPerson.Crouching) && !onTrigger)
             {
                 collider.enabled = false;
             }
@@ -39,6 +41,10 @@ public class OnTriggerGravity : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        if (collider.bounds.Contains(Player.position))
+        {
+            PointToSee.gameObject.SetActive(false);
+        }
         if (GetComponentInChildren<MultipleTrigger>().onTrigger) OnEnterOnScreen = true;
 
         room.AsignScript(GetComponent<OnTriggerGravity>());
@@ -47,6 +53,8 @@ public class OnTriggerGravity : MonoBehaviour
             onTrigger = true;
             firstPerson.enabled = false;
         }
+       
+        
     }
     private void OnTriggerStay  (Collider other)
     {
@@ -97,6 +105,7 @@ public class OnTriggerGravity : MonoBehaviour
             onTrigger = false;
             gameObject.SetActive(false);
             OpositeCollider.gameObject.SetActive(true);
+            PointToSee.gameObject.SetActive(true);
         }
         OnEnterOnScreen = false;
     }
