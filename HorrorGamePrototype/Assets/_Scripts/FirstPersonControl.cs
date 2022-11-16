@@ -27,6 +27,8 @@ using UnityStandardAssets.Characters.FirstPerson;
         [SerializeField] private AudioClip m_JumpSound;           // the sound played when character leaves the ground.
         [SerializeField] private AudioClip m_LandSound;           // the sound played when character touches back on ground.
 
+        public bool StopRotation;
+
         private Camera m_Camera;
         private bool m_Jump;
         private float m_YRotation;
@@ -66,7 +68,8 @@ using UnityStandardAssets.Characters.FirstPerson;
             m_Jumping = false;
             m_AudioSource = GetComponent<AudioSource>();
             m_MouseLook.Init(transform, m_Camera.transform);
-        }
+            m_MouseLook.SetCursorLock(true);
+    }
 
 
         // Update is called once per frame
@@ -92,7 +95,17 @@ using UnityStandardAssets.Characters.FirstPerson;
             }
 
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
+
+            if (!StopRotation)
+            {
+            m_MouseLook.SetCursorLock(true);
+
+            }
+            else
+        {
+            m_MouseLook.SetCursorLock(false);
         }
+    }
 
 
         private void PlayLandingSound()
@@ -142,8 +155,7 @@ using UnityStandardAssets.Characters.FirstPerson;
             ProgressStepCycle(speed);
             UpdateCameraPosition(speed);
 
-            m_MouseLook.UpdateCursorLock();
-
+            
             Crouch();
         }
 
@@ -254,8 +266,10 @@ using UnityStandardAssets.Characters.FirstPerson;
 
         private void RotateView()
         {
-            m_MouseLook.LookRotation(transform, m_Camera.transform);
-           
+            if (!StopRotation)
+            {
+                m_MouseLook.LookRotation(transform, m_Camera.transform);
+            }
         }
 
 
@@ -318,7 +332,6 @@ using UnityStandardAssets.Characters.FirstPerson;
             {
                 if (!isCrouchingUnder)
                 {
-                    Debug.Log("no agachado");
                     if (CurrentCrouchHeight < 0)
                     {
                         CurrentCrouchHeight += CrouchSpeedUp * Time.deltaTime;

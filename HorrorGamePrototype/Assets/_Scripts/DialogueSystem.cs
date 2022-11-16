@@ -8,11 +8,16 @@ public class DialogueSystem : MonoBehaviour
     TMP_Text Dialogue;
     Ray ray;
     RaycastHit hit;
-    public float Distant = 3;
+    [SerializeField] float Distant = 3;
+    float AuxDistant;
+    Inventary inventary;
+    int CommentaryNumber;
     // Start is called before the first frame update
     void Start()
     {
+        inventary = FindObjectOfType<Inventary>();
         Dialogue = GetComponentInChildren<TMP_Text>();
+        AuxDistant = Distant;
     }
 
     // Update is called once per frame
@@ -20,27 +25,44 @@ public class DialogueSystem : MonoBehaviour
     {
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out hit))
+        if (Physics.Raycast(ray, out hit) && Input.GetMouseButton(0))
         {
-            if (hit.collider.GetComponent<TMP_Text>() != null)
+            if (hit.collider.GetComponent<Dialogue>() != null)
             {
                 if (hit.distance < Distant)
                 {
-                    Dialogue.text = hit.collider.GetComponent<TMP_Text>().text;
+                    CheckItems();
+                    hit.collider.GetComponent<Dialogue>().AsignText(Dialogue, CommentaryNumber);
                     StartCoroutine(DialogueColdDown());
                     Distant = 0;
                 }
             }
         }
-
-        
-
     }
 
+    
     IEnumerator DialogueColdDown ()
     {
         yield return new WaitForSeconds(3);
         Dialogue.text = "";
-        Distant = 3;
+        Distant = AuxDistant;
+    }
+
+    void CheckItems ()
+    {
+        if (inventary.ContainsObject(ObjectType.glassdarkstuff))
+        {
+            CommentaryNumber = 1;
+        }
+        else if (inventary.ContainsObject(ObjectType.glass))
+        {
+            CommentaryNumber = 2;
+        }
+        else if (inventary.ContainsObject(ObjectType.glasswater))
+        {
+            CommentaryNumber = 3;
+        }
+
+
     }
 }

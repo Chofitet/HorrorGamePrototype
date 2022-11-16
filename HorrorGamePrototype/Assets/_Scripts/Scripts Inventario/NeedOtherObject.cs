@@ -8,12 +8,21 @@ public class NeedOtherObject : MonoBehaviour
     public bool objectUsed;
     private NeedOtherObject ThisScript;
     MonoBehaviour[] scripts;
+    [SerializeField] string[] NoDesenableScripts;
+    public bool NeedAndGivesObject;
+    [SerializeField] ObjectType typeObject2;
+    private void Awake()
+    {
+        ThisScript = GetComponent<NeedOtherObject>();
+    }
     public ObjectType GetObjectType()
     {
         return typeObject;
     }
+
     private void Start()
     {
+        
         scripts = gameObject.GetComponents<MonoBehaviour>();
         foreach (MonoBehaviour script in scripts)
         {
@@ -21,13 +30,22 @@ public class NeedOtherObject : MonoBehaviour
             {
                 script.enabled = false;
             }
+
+            foreach (string txt in NoDesenableScripts)
+            {
+                if (script.ToString() == txt)
+                {
+                    script.enabled = true;
+                    Debug.Log(script.ToString() + " is active");
+                }
+               
+            }
         }
     }
-
     public void ObjectUsed ()
     {
         objectUsed = true;
-
+        
         foreach (MonoBehaviour script in scripts)
         {
             if (script != ThisScript)
@@ -35,7 +53,11 @@ public class NeedOtherObject : MonoBehaviour
                 script.enabled = true;
             }
         }
-
+        
+    }
+    private void Update()
+    {
+        
     }
 
 }

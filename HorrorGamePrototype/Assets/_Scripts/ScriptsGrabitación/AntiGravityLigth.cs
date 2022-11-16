@@ -20,16 +20,13 @@ public class AntiGravityLigth : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(isAntiGravity);
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         if (Physics.Raycast(ray, out hit, 2))
         {
-            Debug.Log(hit.collider.gameObject);
             if (Input.GetMouseButtonDown(0) && hit.collider.gameObject.tag == "AntiGravityLigth")
             {
                 isAntiGravity = true;
-                Debug.Log("Antigravity");
                 StartCoroutine(ApagarLuz());
             }
         }

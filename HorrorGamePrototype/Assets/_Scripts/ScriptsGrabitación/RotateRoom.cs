@@ -94,7 +94,7 @@ public class RotateRoom : MonoBehaviour
         {
             if (Sign == 1)
             {
-                if (transform.eulerAngles.x <= 170)
+                if (transform.rotation.x < 1)
                 {
                     transform.RotateAround(triggerGravity.AuxPlayer.position, new Vector3(Sign, 0, 0), speed * Time.deltaTime);
                 }
@@ -151,14 +151,14 @@ public class RotateRoom : MonoBehaviour
         {
             if (Sign == 1)
             {
-                if (transform.rotation.y < 0.01f)
+                if (transform.eulerAngles.z >= 183)
                 {
                     transform.RotateAround(triggerGravity.AuxPlayer.position, new Vector3(0, 0, Sign), speed * Time.deltaTime);
                 }
             }
             else
             {
-                if (transform.rotation.y > -0.707f)
+                if (transform.rotation.y >= -0.707f)
                 {
                     transform.RotateAround(triggerGravity.AuxPlayer.position, new Vector3(0, 0, Sign), speed * Time.deltaTime);
                 }
@@ -167,6 +167,7 @@ public class RotateRoom : MonoBehaviour
 
 
     }
+  
     IEnumerator Girando ()
     {
         rotando = true;
