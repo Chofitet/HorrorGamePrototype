@@ -9,7 +9,7 @@ public class PassTriggerAppersObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(GetComponentInChildren<InAreaTrigger>()._OnTriggerArea)
+        if(GetComponentInChildren<MultipleTrigger>().onTrigger)
         {
             if (ObjectToAppear == null)
             {

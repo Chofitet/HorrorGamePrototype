@@ -177,7 +177,7 @@ public class DragginSystem : MonoBehaviour
         isClosetoDoor = true;
         if (!pulled)
         {
-            if (dirSing == -1)
+           /* if (dirSing == -1)
             {
                 RB.AddForce(StopPoint.transform.position * -ForceOpen);
             }
@@ -187,6 +187,7 @@ public class DragginSystem : MonoBehaviour
                 RB.AddForce(StopPoint.transform.position * ForceOpen);
             }
             pulled = true;
+           */
         }
 
     }
