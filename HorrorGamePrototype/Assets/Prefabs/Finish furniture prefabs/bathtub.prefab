@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 7464372507177565777}
   - component: {fileID: 7227868449804063676}
   - component: {fileID: 1488098840077566117}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: bathtub
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -261,8 +261,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.7612066, y: 1.5716844, z: 0.44895965}
-  m_Center: {x: 0.0015540123, y: -0.036336184, z: 0.2211124}
+  m_Size: {x: 0.7612066, y: 1.5716844, z: 0.7070536}
+  m_Center: {x: 0.0015540123, y: -0.036336184, z: 0.35016102}
 --- !u!1 &5950429951519988784
 GameObject:
   m_ObjectHideFlags: 0
