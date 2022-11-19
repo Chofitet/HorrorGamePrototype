@@ -13,6 +13,7 @@ public class MultipleTrigger : MonoBehaviour
     [SerializeField] bool isPassingThrough;
     [SerializeField] bool isClicked;
     [SerializeField] bool isPointing;
+    [SerializeField] bool isSwitching;
 
     [Header("Is for once")]
     [SerializeField] public bool yes;
@@ -34,7 +35,7 @@ public class MultipleTrigger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isClicked) onTrigger = false;
+        if (isClicked && !yes) onTrigger = false;
 
         if (isOnScreen)
         {
@@ -93,7 +94,8 @@ public class MultipleTrigger : MonoBehaviour
             
         }
 
-        if (isClicked && Input.GetMouseButton(0) && yes)
+
+        if (isClicked && Input.GetMouseButtonDown(0))
         {
             Ray ray = new Ray(transform.position, _camera.transform.position - transform.position);
             Debug.DrawRay(ray.origin, ray.direction, Color.blue);
@@ -109,7 +111,7 @@ public class MultipleTrigger : MonoBehaviour
             }
         }
 
-        if (isClicked && Input.GetMouseButton(0))
+        if (isSwitching && Input.GetMouseButtonDown(0))
         {
             Ray ray = new Ray(transform.position, _camera.transform.position - transform.position);
             Debug.DrawRay(ray.origin, ray.direction, Color.blue);
@@ -120,10 +122,14 @@ public class MultipleTrigger : MonoBehaviour
             {
                 if (hit.collider.tag == "Player")
                 {
-
-                    onTrigger = true;
+                    if (!onTrigger)
+                    {
+                        onTrigger = true;
+                    }
+                    else onTrigger = false;
                 }
             }
+
         }
 
 

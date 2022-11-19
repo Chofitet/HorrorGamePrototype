@@ -284,15 +284,15 @@ public class ChangeLightmap : MonoBehaviour
         CreateResourcesDirectory(m_resourceFolder);
 
         string resourcesDir = GetResourcesDirectory(m_resourceFolder);
-        CopyTextureToResources(resourcesDir, lightingScenariosData.lightmaps);
+        /*CopyTextureToResources(resourcesDir, lightingScenariosData.lightmaps);
         CopyTextureToResources(resourcesDir, lightingScenariosData.lightmapsDir);
         CopyTextureToResources(resourcesDir, lightingScenariosData.lightmapsShadow);
-       
+       */
         string json = JsonUtility.ToJson(lightingScenariosData);
         WriteJsonFile(resourcesDir, json);
     }
 
-    
+    /*
     private void CopyTextureToResources(string toPath, Texture2D[] textures)
     {
         for (int i = 0; i < textures.Length; i++)
@@ -337,5 +337,5 @@ public class ChangeLightmap : MonoBehaviour
         TextureImporter importer = AssetImporter.GetAtPath(newTexturePath) as TextureImporter;
         return importer;
     }
-    
+    */
 }

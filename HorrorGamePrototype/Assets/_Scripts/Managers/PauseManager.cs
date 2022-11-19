@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PauseManager : MonoBehaviour
 {
+    
     [SerializeField] GameObject PauseMenu;
     FirstPersonControl FPC;
     bool isPaused;
 
+    
     private void Start()
     {
         FPC = FindObjectOfType<FirstPersonControl>();
@@ -50,6 +53,4 @@ public class PauseManager : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu");
     }
-
-    
 }

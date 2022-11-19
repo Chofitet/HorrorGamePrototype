@@ -99,7 +99,6 @@ using UnityStandardAssets.Characters.FirstPerson;
             if (!StopRotation)
             {
             m_MouseLook.SetCursorLock(true);
-
             }
             else
         {
