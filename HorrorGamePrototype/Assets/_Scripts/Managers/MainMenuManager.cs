@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class MainMenuManager : MonoBehaviour
 {
     [SerializeField] GameObject QuitConfirmationMenu;
+    [SerializeField] GameObject MainMenu;
 
     private void Start()
     {
@@ -15,6 +16,7 @@ public class MainMenuManager : MonoBehaviour
     public void QuitGame()
     {
         QuitConfirmationMenu.SetActive(true);
+        MainMenu.SetActive(false);
     }
 
     public void QuitConfirmation()
@@ -30,5 +32,6 @@ public class MainMenuManager : MonoBehaviour
     public void Back ()
     {
         QuitConfirmationMenu.SetActive(false);
+        MainMenu.SetActive(true);
     }
 }
