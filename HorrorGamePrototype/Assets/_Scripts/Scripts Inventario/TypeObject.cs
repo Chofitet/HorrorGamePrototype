@@ -6,6 +6,12 @@ public enum ObjectType
     glassdarkstuff,
     glass,
     glasswater,
+    teeth,
+    crayon,
+    crayonbox,
+    shoe,
+    coathanger,
+    hook,
 }
 
 public class TypeObject : MonoBehaviour

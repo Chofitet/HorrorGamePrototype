@@ -18,8 +18,20 @@ public class Inventary : MonoBehaviour
     [SerializeField] Sprite IMGglass;
     [SerializeField] Sprite IMGglassdarkstuff;
     [SerializeField] Sprite IMGglasswater;
+    [SerializeField] Sprite IMGTeeth;
+    [SerializeField]
+    Sprite IMGCoathanger;
+    [SerializeField]
+    Sprite IMGHook;
+    [SerializeField]
+    Sprite IMGCrayon;
+    [SerializeField]
+    Sprite IMGBoxCrayon;
+    [SerializeField]
+    Sprite IMGShoe;
 
-   
+
+
     private void Start()
     {
             enabled = true;
@@ -81,7 +93,8 @@ public class Inventary : MonoBehaviour
                 if (obj != null)
                 {
                     AddObject(obj.GetObjectType());
-                    RefreshHud();
+                    if (inventary.Count == 0) RefreshHud();
+
                     Destroy(obj.gameObject);
                 }
             }
@@ -124,6 +137,26 @@ public class Inventary : MonoBehaviour
         else if (inventary.Contains(ObjectType.glasswater))
         {
             IMGinventaryObject.sprite = IMGglasswater;
+        }
+        else if (inventary.Contains(ObjectType.coathanger))
+        {
+            IMGinventaryObject.sprite = IMGCoathanger;
+        }
+        else if (inventary.Contains(ObjectType.hook))
+        {
+            IMGinventaryObject.sprite = IMGHook;
+        }
+        else if (inventary.Contains(ObjectType.teeth))
+        {
+            IMGinventaryObject.sprite = IMGTeeth;
+        }
+        else if (inventary.Contains(ObjectType.crayon))
+        {
+            IMGinventaryObject.sprite = IMGCrayon;
+        }
+        else if (inventary.Contains(ObjectType.crayonbox))
+        {
+            IMGinventaryObject.sprite = IMGBoxCrayon;
         }
         else IMGinventaryObject.sprite = IMGNull;
     }
