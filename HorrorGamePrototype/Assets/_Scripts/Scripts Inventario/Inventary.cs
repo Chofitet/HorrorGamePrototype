@@ -19,8 +19,9 @@ public class Inventary : MonoBehaviour
     [SerializeField] Sprite IMGglassdarkstuff;
     [SerializeField] Sprite IMGglasswater;
     [SerializeField] Sprite IMGTeeth;
-    [SerializeField]
-    Sprite IMGCoathanger;
+    [SerializeField] Sprite IMGFile;
+    [SerializeField] Sprite IMGFlesh;
+    [SerializeField] Sprite IMGCoathanger;
     [SerializeField]
     Sprite IMGHook;
     [SerializeField]
