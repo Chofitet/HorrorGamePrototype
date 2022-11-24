@@ -6,17 +6,12 @@ public class InspectionObjectInRigthPositionTrigger : MonoBehaviour
 {
     public bool onTrigger;
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerStay(Collider other)
     {
-        Ray ray = new Ray(transform.position, transform.up);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit))
+
+        if (other.tag == "Target")
         {
-            if (hit.collider.tag == "Player")
-            {
-                onTrigger = true;
-            }
+            onTrigger = true;
         }
     }
 }

@@ -32,10 +32,16 @@ public class InspectorObject : MonoBehaviour
         mousePosition.z = 10f;
         mousePosition = cam.ScreenToWorldPoint(mousePosition);
         Debug.DrawRay(transform.position, mousePosition - transform.position, Color.red);
-
+        RaycastHit hit;
+        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out hit, maxDistant, InspectionObject))
+            {
+            Debug.Log(hit.collider.gameObject);
+        }
+           
         if (Input.GetMouseButtonDown(0))
         {
-            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+           // Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             
             if (Physics.Raycast(ray,out hit, maxDistant, InspectionObject))
             {

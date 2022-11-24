@@ -12,6 +12,12 @@ public class DialogueSystem : MonoBehaviour
     float AuxDistant;
     Inventary inventary;
     int CommentaryNumber;
+
+    [SerializeField] GameObject flipRoom;
+    [SerializeField] GameObject BaseRoom;
+    [SerializeField] GameObject DoorAnimated;
+    [SerializeField] GameObject DoorDraggeable;
+    [SerializeField] GameObject DoorStatic;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +43,17 @@ public class DialogueSystem : MonoBehaviour
                     Distant = 0;
                 }
             }
+        }
+
+        if(CommentaryNumber == 2)
+        {
+            flipRoom.SetActive(true);
+            DoorAnimated.SetActive(false);
+        }
+        else if (CommentaryNumber == 3)
+        {
+            BaseRoom.SetActive(false);
+            DoorStatic.SetActive(true);
         }
     }
 
