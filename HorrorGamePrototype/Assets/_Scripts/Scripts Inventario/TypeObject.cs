@@ -12,6 +12,8 @@ public enum ObjectType
     shoe,
     coathanger,
     hook,
+    file,
+    flesh,
 }
 
 public class TypeObject : MonoBehaviour
