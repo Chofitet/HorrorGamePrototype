@@ -19,6 +19,8 @@ public class Inventary : MonoBehaviour
     [SerializeField] Sprite IMGglassdarkstuff;
     [SerializeField] Sprite IMGglasswater;
     [SerializeField] Sprite IMGTeeth;
+    [SerializeField] Sprite IMGfile;
+    [SerializeField] Sprite IMGflesh;
     [SerializeField]
     Sprite IMGCoathanger;
     [SerializeField]
@@ -157,6 +159,14 @@ public class Inventary : MonoBehaviour
         else if (inventary.Contains(ObjectType.crayonbox))
         {
             IMGinventaryObject.sprite = IMGBoxCrayon;
+        }
+        else if (inventary.Contains(ObjectType.file))
+        {
+            IMGinventaryObject.sprite = IMGfile;
+        }
+        else if (inventary.Contains(ObjectType.flesh))
+        {
+            IMGinventaryObject.sprite = IMGflesh;
         }
         else IMGinventaryObject.sprite = IMGNull;
     }
