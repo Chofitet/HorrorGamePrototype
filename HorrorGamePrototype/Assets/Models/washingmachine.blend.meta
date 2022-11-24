@@ -3,7 +3,27 @@ guid: 15d7ecc3f5c8c6f4ea455f458c190576
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: washingmachineGlassMat
+    second: {fileID: 2100000, guid: 035ba28cfa189ec44b0855cb2e46f276, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: washingmachineMat
+    second: {fileID: 2100000, guid: ddb05e0d7921f19408fcb28cc38b79bc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: washingmachineMat1
+    second: {fileID: 2100000, guid: 1b417a71d7556b24cbc7c46d21012dab, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: washingmachineMat2
+    second: {fileID: 2100000, guid: 42719890e27247f41a25b74965fdb4d0, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
