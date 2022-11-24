@@ -11,6 +11,7 @@ public class WashingMachineStop : MonoBehaviour
     [SerializeField] AudioSource finLavaropa;
     [SerializeField] Collider TapaLavadora;
     SoundManager SM;
+    bool x;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,10 +23,11 @@ public class WashingMachineStop : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (multipleTrigger.onTrigger)
+        if (multipleTrigger.onTrigger && x == false)
         {
             SM.PlaySoud(verterAgua);
             StartCoroutine(stop());
+            x = true;
         }
     }
 
