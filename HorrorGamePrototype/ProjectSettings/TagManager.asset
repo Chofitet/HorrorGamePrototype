@@ -11,6 +11,7 @@ TagManager:
   - Object
   - NeedObject
   - GivesObject
+  - Target
   layers:
   - Default
   - TransparentFX
