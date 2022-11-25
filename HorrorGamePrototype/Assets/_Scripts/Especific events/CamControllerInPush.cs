@@ -32,7 +32,7 @@ public class CamControllerInPush : MonoBehaviour
 
     IEnumerator Golpe()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         Cam.Priority = 1;
         Debug.Log("golpe");
         cinemachineBrain.m_DefaultBlend.m_Time = 1.5f;
