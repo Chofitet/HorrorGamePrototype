@@ -12,10 +12,14 @@ public class AntiGravityLigth : MonoBehaviour
     public float fuerza;
     [SerializeField] Light Light;
     [SerializeField] Light Light2;
+    SoundManager sm;
+    AudioSource sound;
     private void Start()
     {
         RB = GetComponent<Rigidbody>();
         RB.useGravity = false;
+        sm = FindObjectOfType<SoundManager>();
+        sound = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -33,8 +37,9 @@ public class AntiGravityLigth : MonoBehaviour
         if (isAntiGravity)
         {
             RB.AddForce(new Vector3(0, fuerza, 0));
-            if (transform.position.y >= StopPosition.position.y)
+            if (transform.position.y <= StopPosition.position.y)
             {
+                
                 RB.velocity = Vector3.zero;
                 transform.position = StopPosition.position;
                 isAntiGravity = false;
@@ -47,6 +52,7 @@ public class AntiGravityLigth : MonoBehaviour
     IEnumerator ApagarLuz()
     {
         yield return new WaitForSeconds(1f);
+        sm.PlaySoud(sound);
         Light.gameObject.SetActive(false);
         Light2.gameObject.SetActive(false);
     }

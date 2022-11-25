@@ -7,6 +7,8 @@ public class TwinklingLight : MonoBehaviour
     [SerializeField] TriggerCount triggerCount;
     [SerializeField] MultipleTrigger multipleTrigger;
     Animator anim;
+    [SerializeField] GameObject appears;
+    bool x;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,14 +19,17 @@ public class TwinklingLight : MonoBehaviour
     void Update()
     {
         
-        if(triggerCount.isTrigger)
+        if(triggerCount.isTrigger && x == false)
         {
             Debug.Log("eeeee" + triggerCount.isTrigger);
             anim.SetBool("normal", true);
         }
-        else if(multipleTrigger.onTrigger)
+
+        if(appears.activeSelf == true)
         {
-            anim.SetBool("fast", true);
+            anim.SetBool("normal", false);
+            anim.SetBool("fast", false);
+            x = true;
         }
     }
 }
