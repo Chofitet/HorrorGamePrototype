@@ -42,6 +42,10 @@ public class ScreenPoint : MonoBehaviour
             {
                 Pointing.color = new Color(Pointing.color.r, Pointing.color.g, Pointing.color.b, 1f);
             }
+            else if (hit.collider.gameObject.tag == "Object" && hit.distance < 2)
+            {
+                Pointing.color = new Color(Pointing.color.r, Pointing.color.g, Pointing.color.b, 1f);
+            }
             else Pointing.color = new Color(Pointing.color.r, Pointing.color.g, Pointing.color.b, alpha);
             
         }

@@ -30,12 +30,12 @@ public class DragginSystem : MonoBehaviour
     
     private void Update()
     {
-        if (Vector3.Distance(StopPoint.position, Player.position) < 0.7)
+       if (Vector3.Distance(StopPoint.position, Player.position) < 0.7)
         {
             AddForce();
         }
         else isClosetoDoor = false;
-
+      
         if (RB.isKinematic == true)
         {
             needOtherObject = GetComponent<NeedOtherObject>();

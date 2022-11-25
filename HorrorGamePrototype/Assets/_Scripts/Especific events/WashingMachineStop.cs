@@ -12,6 +12,7 @@ public class WashingMachineStop : MonoBehaviour
     [SerializeField] Collider TapaLavadora;
     SoundManager SM;
     bool x;
+    public bool StopLavadora;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,5 +39,6 @@ public class WashingMachineStop : MonoBehaviour
         SM.PlaySoud(finLavaropa);
         TapaLavadora.enabled = true;
         Destroy(lavadoraSound);
+        StopLavadora = true;
     }
 }
