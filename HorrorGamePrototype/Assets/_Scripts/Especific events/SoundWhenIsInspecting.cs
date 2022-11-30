@@ -7,6 +7,7 @@ public class SoundWhenIsInspecting : MonoBehaviour
     InspectorObject inspector;
     [SerializeField] AudioSource AS;
     SoundManager SM;
+    bool x;
     void Start()
     {
         inspector = FindObjectOfType<InspectorObject>();
@@ -16,7 +17,7 @@ public class SoundWhenIsInspecting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (inspector.isInspecting)
+        if (inspector.isInspecting && x == false && gameObject.layer == 6)
         {
             StartCoroutine(PlaySound());
         }
@@ -24,8 +25,10 @@ public class SoundWhenIsInspecting : MonoBehaviour
 
    IEnumerator PlaySound()
     {
+        x = true;
         yield return new WaitForSeconds(Random.Range(2, 5));
         SM.PlaySoud(AS);
         yield return new WaitForSeconds(AS.clip.length);
+        x = false;
     }
 }

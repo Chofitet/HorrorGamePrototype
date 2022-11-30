@@ -9,6 +9,7 @@ public class SoundTrigger : MonoBehaviour
     [SerializeField] AudioSource AS;
     SoundManager SM;
     bool x;
+    bool y;
     void Start()
     {
         trigger = GetComponent<MultipleTrigger>();
@@ -24,8 +25,9 @@ public class SoundTrigger : MonoBehaviour
             x = true;
         }
 
-        if (!trigger.yes)
+        if (!trigger.yes && x == true && y == false)
         {
+            y = true;
             StartCoroutine(enumerable());
         }
     }
@@ -34,6 +36,7 @@ public class SoundTrigger : MonoBehaviour
     {
         yield return new WaitForSeconds(AS.clip.length);
         x = false;
+        y = false;
     }
 
 }

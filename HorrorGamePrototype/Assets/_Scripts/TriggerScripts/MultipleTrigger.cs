@@ -19,7 +19,7 @@ public class MultipleTrigger : MonoBehaviour
     [SerializeField] public bool yes;
     
     [Header("Parameters")]
-    float DistantToClick = 0.6f;
+    float DistantToClick = 1.15f;
     [SerializeField] float DistantToSee = 3;
 
 
