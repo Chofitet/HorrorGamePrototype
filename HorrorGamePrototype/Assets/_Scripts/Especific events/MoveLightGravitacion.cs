@@ -15,7 +15,7 @@ public class MoveLightGravitacion : MonoBehaviour
     void Start()
     {
         FPC = FindObjectOfType<FirstPersonControl>();
-        offset = new Vector3(0, 0, 1);
+        offset = new Vector3(0, 0, 2);
     }
 
     // Update is called once per frame

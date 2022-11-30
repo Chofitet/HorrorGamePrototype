@@ -87,7 +87,7 @@ public class Inventary : MonoBehaviour
 
         ray = cam.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out hit, 2) && Input.GetMouseButtonDown(0))
+        if (Physics.Raycast(ray, out hit, 0.6f) && Input.GetMouseButtonDown(0))
         {
             if (hit.collider.gameObject.layer == 8)
             {

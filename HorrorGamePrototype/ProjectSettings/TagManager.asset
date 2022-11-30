@@ -23,8 +23,8 @@ TagManager:
   - NeedObject
   - Object
   - SpookyScarySkeletons
-  - overLap1
-  - overLap2
+  - Ground
+  - ColliderGround
   - 
   - 
   - 

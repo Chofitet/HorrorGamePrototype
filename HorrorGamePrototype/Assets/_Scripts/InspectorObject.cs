@@ -10,14 +10,14 @@ public class InspectorObject : MonoBehaviour
     public static GameObject CurrentObject, manager;
     private Rigidbody rb;
     private Collider coll;
-    bool isInspecting;
+    public bool isInspecting;
     [SerializeField] float Speed = 0.5f;
     Transform InspectionZone;
      Camera cam;
     RaycastHit hit;
    
     [SerializeField] LayerMask InspectionObject;
-    public float maxDistant;
+    float maxDistant = 0.6f;
     private void Start()
     {
         InspectionZone = GetComponent<Transform>();
@@ -48,8 +48,11 @@ public class InspectorObject : MonoBehaviour
                 CurrentObject = hit.collider.gameObject;
                 rb = CurrentObject.GetComponent<Rigidbody>();
                 
-                if (isInspecting == false) { initial_position = hit.collider.transform.position; }
-                initial_rotation = Quaternion.Euler(hit.collider.transform.localEulerAngles);
+                if (isInspecting == false) 
+                { 
+                    initial_position = hit.collider.transform.position;
+                    initial_rotation = Quaternion.Euler(hit.collider.transform.localEulerAngles);
+                }
                 if(rb != null) { rb.isKinematic = true;}
                 firstPerson.enabled = false;
                 StartCoroutine(MoveToTarget(CurrentObject, InspectionZone.position, Speed));
