@@ -17,7 +17,7 @@ public class InspectorObject : MonoBehaviour
     RaycastHit hit;
    
     [SerializeField] LayerMask InspectionObject;
-    float maxDistant = 0.6f;
+    public float maxDistant = 1.15f;
     private void Start()
     {
         InspectionZone = GetComponent<Transform>();
@@ -31,14 +31,17 @@ public class InspectorObject : MonoBehaviour
         Vector3 mousePosition = Input.mousePosition;
         mousePosition.z = 10f;
         mousePosition = cam.ScreenToWorldPoint(mousePosition);
-        Debug.DrawRay(transform.position, mousePosition - transform.position, Color.red);
+        //Debug.DrawRay(cam.transform.position, mousePosition - transform.position * maxDistant, Color.red);
         RaycastHit hit;
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit, maxDistant, InspectionObject))
             {
             Debug.Log(hit.collider.gameObject);
         }
-           
+
+        if (Physics.Raycast(ray, out hit, maxDistant)) { Debug.DrawLine(ray.origin, hit.point, Color.red);}
+
+
         if (Input.GetMouseButtonDown(0))
         {
            // Ray ray = cam.ScreenPointToRay(Input.mousePosition);
@@ -55,10 +58,13 @@ public class InspectorObject : MonoBehaviour
                 }
                 if(rb != null) { rb.isKinematic = true;}
                 firstPerson.enabled = false;
-                StartCoroutine(MoveToTarget(CurrentObject, InspectionZone.position, Speed));
+                coll = CurrentObject.GetComponent<Collider>();
+                coll.enabled = false;
+                StartCoroutine(MoveToTarget(CurrentObject, InspectionZone.position, Speed, coll));
                 isInspecting = true;
                 manager.GetComponent<ItemTransform>().enabled = true;
                 coll = CurrentObject.GetComponent<Collider>();
+                coll.enabled = false;
             }
             
         }
@@ -66,18 +72,23 @@ public class InspectorObject : MonoBehaviour
         {
             manager.GetComponent<ItemTransform>().enabled = false;
             CurrentObject.transform.rotation = Quaternion.Euler(initial_rotation.eulerAngles);
-            StartCoroutine(MoveToTarget(CurrentObject, initial_position, Speed));
+            StartCoroutine(MoveToTarget(CurrentObject, initial_position, Speed, coll));
             isInspecting = false;
             firstPerson.enabled = true;
         }
     }
 
-    IEnumerator MoveToTarget (GameObject currentObj, Vector3 target, float speed)
+    IEnumerator MoveToTarget (GameObject currentObj, Vector3 target, float speed, Collider coll)
     {
         while (currentObj.transform.position != target)
         {
             currentObj.transform.position = Vector3.MoveTowards(currentObj.transform.position, target, Time.deltaTime * speed);
             yield return null;
+        }
+        if (currentObj.transform.position == initial_position)
+        {
+            Debug.Log("ahora");
+            coll.enabled = true; 
         }
     }
 

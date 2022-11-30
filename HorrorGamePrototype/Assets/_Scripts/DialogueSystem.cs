@@ -8,7 +8,7 @@ public class DialogueSystem : MonoBehaviour
     TMP_Text Dialogue;
     Ray ray;
     RaycastHit hit;
-    [SerializeField] float Distant = 3;
+    [SerializeField] float Distant = 1.15f;
     float AuxDistant;
     Inventary inventary;
     int CommentaryNumber;

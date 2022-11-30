@@ -311,7 +311,6 @@ using UnityStandardAssets.Characters.FirstPerson;
                 isCrouchingUnder = true;
             }
             else isCrouchingUnder = false;
-                Debug.DrawRay(m_Camera.transform.position, Vector3.up * rayHeight);
 
         if (Input.GetKey(KeyCode.LeftControl))
             {
