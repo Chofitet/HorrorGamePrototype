@@ -9,11 +9,13 @@ public class CamControllerInPush : MonoBehaviour
     [SerializeField] float blendvelocity;
     CinemachineVirtualCamera Cam;
     CinemachineBrain cinemachineBrain;
+    FirstPersonControl firstPerson;
     bool x;
 
     // Start is called before the first frame update
     void Start()
     {
+        firstPerson = FindObjectOfType<FirstPersonControl>();
         Cam = GetComponent<CinemachineVirtualCamera>();
         cinemachineBrain = FindObjectOfType<CinemachineBrain>();
     }
@@ -23,6 +25,7 @@ public class CamControllerInPush : MonoBehaviour
     {
         if (multipleTrigger.onTrigger && x == false)
         {
+            firstPerson.enabled = false;
             Cam.Priority = 16;
             cinemachineBrain.m_DefaultBlend.m_Time = blendvelocity;
             StartCoroutine(Golpe());
@@ -32,7 +35,8 @@ public class CamControllerInPush : MonoBehaviour
 
     IEnumerator Golpe()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.5f);
+        firstPerson.enabled = true;
         Cam.Priority = 1;
         Debug.Log("golpe");
         cinemachineBrain.m_DefaultBlend.m_Time = 1.5f;

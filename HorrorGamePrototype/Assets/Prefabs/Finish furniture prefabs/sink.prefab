@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 136514411646853722}
+  - component: {fileID: 5085588315372111682}
   m_Layer: 0
   m_Name: sink
   m_TagString: Untagged
@@ -35,6 +36,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &5085588315372111682
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 769886351697836256}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6882539, y: 0.78781646, z: 0.7310283}
+  m_Center: {x: 0.007346928, y: 0.39923373, z: -0.011610835}
 --- !u!1 &1287150944538018969
 GameObject:
   m_ObjectHideFlags: 0
@@ -295,7 +309,6 @@ GameObject:
   - component: {fileID: 8162239167031503767}
   - component: {fileID: 6197366671175188143}
   - component: {fileID: 7781766351238752603}
-  - component: {fileID: 1941173871157859216}
   m_Layer: 0
   m_Name: sink
   m_TagString: Untagged
@@ -368,16 +381,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1941173871157859216
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8616960000241088968}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.6824495, y: 0.72101283, z: 0.7}
-  m_Center: {x: 0, y: 0.01050645, z: 0.35}

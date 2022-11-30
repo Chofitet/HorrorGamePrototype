@@ -19,7 +19,7 @@ public class MultipleTrigger : MonoBehaviour
     [SerializeField] public bool yes;
     
     [Header("Parameters")]
-    [SerializeField] float DistantToClick = 3;
+    float DistantToClick = 0.6f;
     [SerializeField] float DistantToSee = 3;
 
 
@@ -97,30 +97,42 @@ public class MultipleTrigger : MonoBehaviour
 
         if (isClicked && Input.GetMouseButtonDown(0))
         {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            /*
             Ray ray = new Ray(transform.position, _camera.transform.position - transform.position);
             Debug.DrawRay(ray.origin, ray.direction, Color.blue);
+            */
             RaycastHit hit;
-            Vector3 screenPoint = _camera.WorldToViewportPoint(transform.position);
+           /* Vector3 screenPoint = _camera.WorldToViewportPoint(transform.position);
             bool see = screenPoint.z > 0 && screenPoint.x > 0 && screenPoint.x < 1 && screenPoint.y > 0 && screenPoint.y < 1;
-            if (Physics.Raycast(ray, out hit, DistantToClick) && see)
+           */
+            if (Physics.Raycast(ray, out hit, DistantToClick))
             {
-                if (hit.collider.tag == "Player")
+                if (hit.collider.gameObject == this.gameObject)
                 {
                     onTrigger = true;
                 }
             }
+            
         }
 
         if (isSwitching && Input.GetMouseButtonDown(0))
         {
-            Ray ray = new Ray(transform.position, _camera.transform.position - transform.position);
+
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            /*Ray ray = new Ray(transform.position, _camera.transform.position - transform.position);
             Debug.DrawRay(ray.origin, ray.direction, Color.blue);
+           */
             RaycastHit hit;
+            /*
             Vector3 screenPoint = _camera.WorldToViewportPoint(transform.position);
             bool see = screenPoint.z > 0 && screenPoint.x > 0 && screenPoint.x < 1 && screenPoint.y > 0 && screenPoint.y < 1;
-            if (Physics.Raycast(ray, out hit, DistantToClick) && see)
+            */
+            if (Physics.Raycast(ray, out hit, DistantToClick))
             {
-                if (hit.collider.tag == "Player")
+                if (hit.collider.gameObject == this.gameObject)
                 {
                     if (!onTrigger)
                     {
@@ -129,6 +141,7 @@ public class MultipleTrigger : MonoBehaviour
                     else onTrigger = false;
                 }
             }
+            
 
         }
 

@@ -26,7 +26,7 @@ public class ScreenPoint : MonoBehaviour
             {
                 Pointing.color = new Color(Pointing.color.r, Pointing.color.g, Pointing.color.b, 1f);
             }
-            else if (hit.collider.gameObject.layer == 6 && hit.distance < 1 && FindObjectOfType<FirstPersonControl>().isActiveAndEnabled)
+            else if (hit.collider.gameObject.layer == 6 && hit.distance < 0.6f && FindObjectOfType<FirstPersonControl>().isActiveAndEnabled)
             {
                 Pointing.color = new Color(Pointing.color.r, Pointing.color.g, Pointing.color.b, 1f);
             }
@@ -34,15 +34,15 @@ public class ScreenPoint : MonoBehaviour
             {
                 Pointing.color = new Color(Pointing.color.r, Pointing.color.g, Pointing.color.b, 1f);
             }
-            else if (hit.collider.gameObject.layer == 7 && hit.distance < 1)
+            else if (hit.collider.gameObject.layer == 7 && hit.distance < 0.6f)
             {
                 Pointing.color = new Color(Pointing.color.r, Pointing.color.g, Pointing.color.b, 1f);
             }
-            else if (hit.collider.gameObject.layer == 8 && hit.distance < 1)
+            else if (hit.collider.gameObject.layer == 8 && hit.distance < 0.6f)
             {
                 Pointing.color = new Color(Pointing.color.r, Pointing.color.g, Pointing.color.b, 1f);
             }
-            else if (hit.collider.gameObject.tag == "Object" && hit.distance < 2)
+            else if (hit.collider.gameObject.tag == "Object" && hit.distance < 0.6f)
             {
                 Pointing.color = new Color(Pointing.color.r, Pointing.color.g, Pointing.color.b, 1f);
             }
