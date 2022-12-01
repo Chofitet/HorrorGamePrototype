@@ -20,12 +20,13 @@ public class DragginSystem : MonoBehaviour
     private SpringJoint m_SpringJoint;
     NeedOtherObject needOtherObject;
     bool auxneedOtherObject;
-
+   
     private void Start()
     {
         // triggerDoor = GetComponentInChildren<OnTriggerDoor>();
         Player = GameObject.FindGameObjectWithTag("Player").transform;
         RB = GetComponent<Rigidbody>();
+        
     }
     
     private void Update()
@@ -125,11 +126,15 @@ public class DragginSystem : MonoBehaviour
         }
         if (offsetStopPoint < 0.02 && offsetStopPoint > 0 && !isClosetoDoor)
         {
+            
             RB.angularVelocity = new Vector3(0, 0, 0);
             RB.velocity = new Vector3(0, 0, 0);
             pulled = false;
         }
-        else pulled = true;
+        else
+        {
+            pulled = true;
+        }
 
 
     }
