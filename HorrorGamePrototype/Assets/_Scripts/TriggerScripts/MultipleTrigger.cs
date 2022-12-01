@@ -40,7 +40,7 @@ public class MultipleTrigger : MonoBehaviour
         if (isOnScreen)
         {
             Vector3 screenPoint = _camera.WorldToViewportPoint(transform.position);
-            onTrigger = screenPoint.z > 0 && screenPoint.x > 0 && screenPoint.x < 1 && screenPoint.y > 0 && screenPoint.y < 1;
+            onTrigger = screenPoint.z > 0 && screenPoint.x > -0.3f && screenPoint.x < 1.3f && screenPoint.y > -1 && screenPoint.y < 2;
         }
 
         if (isOnScreen && yes)

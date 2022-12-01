@@ -43,7 +43,7 @@ public class OnTriggerGravity : MonoBehaviour
     {
         if (collider.bounds.Contains(Player.position))
         {
-            PointToSee.gameObject.SetActive(false);
+           PointToSee.gameObject.SetActive(false);
         }
         if (GetComponentInChildren<MultipleTrigger>().onTrigger) OnEnterOnScreen = true;
 
