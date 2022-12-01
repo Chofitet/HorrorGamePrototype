@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class TreiggerCountAppearsDesappear : MonoBehaviour
 {
-    TriggerCount triggerCount;
+    TriggerCountOfTriggerCount triggerCount;
     [SerializeField] GameObject ObjectToAppear;
     [SerializeField] GameObject ObjectToDisappear;
 
     // Start is called before the first frame update
     void Start()
     {
-        triggerCount = GetComponent<TriggerCount>();
+        triggerCount = GetComponent<TriggerCountOfTriggerCount>();
     }
 
     // Update is called once per frame
