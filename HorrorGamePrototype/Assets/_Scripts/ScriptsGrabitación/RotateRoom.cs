@@ -102,7 +102,7 @@ public class RotateRoom : MonoBehaviour
             }
             if (Sign == -1)
             {
-                if (transform.rotation.x >= 0.707)
+                if (transform.rotation.x >= 0.71)
                 {
                     transform.RotateAround(triggerGravity.AuxPlayer.position, new Vector3(Sign, 0, 0), speed * Time.deltaTime);
                 }
@@ -171,7 +171,7 @@ public class RotateRoom : MonoBehaviour
     IEnumerator Girando ()
     {
         rotando = true;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.7f);
         firstPersonControl.enabled = true;
         yield return new WaitForSeconds(0.5f);
         rotando = false;

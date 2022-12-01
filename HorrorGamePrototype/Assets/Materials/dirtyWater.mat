@@ -73,10 +73,11 @@ Material:
     - _Smoothness: 0.618
     - _Strenght: 0.12
     - _Tiling: 50
+    - _emission: 0
     m_Colors:
     - _Offset: {r: 0, g: 0, b: 0, a: 0}
     - _Tiling: {r: 0.1, g: 0.1, b: 0, a: 0}
-    - _TintColor: {r: 0.5568628, g: 0.30473533, b: 0.23165491, a: 0.5176471}
+    - _TintColor: {r: 0.8235294, g: 0, b: 0.011695591, a: 0.33333334}
   m_BuildTextureStacks: []
 --- !u!114 &1748688521998277390
 MonoBehaviour:

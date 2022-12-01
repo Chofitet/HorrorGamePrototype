@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &270267582
 Transform:
   m_ObjectHideFlags: 0
@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 270267581}
   m_LocalRotation: {x: 0.18401723, y: 0.24067412, z: 0.051630918, w: 0.9516028}
-  m_LocalPosition: {x: 0.633, y: 0.403, z: -0.023}
+  m_LocalPosition: {x: 0.388, y: 0.403, z: 0.148}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -958,7 +958,7 @@ GameObject:
   - component: {fileID: 3967835741426675527}
   - component: {fileID: 3967835741429077447}
   - component: {fileID: 1070144434618412418}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: FPSController
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1418,7 +1418,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3967835741732937819}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0000000010428352, y: -0.000000059604645, z: -0.00000044703484}
+  m_LocalPosition: {x: -0.000000029802322, y: 0.000000059604645, z: 0.000000059604645}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1938,11 +1938,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstPerson: {fileID: 3967835741429077446}
+  isInspecting: 0
   Speed: 10
   InspectionObject:
     serializedVersion: 2
     m_Bits: 64
-  maxDistant: 2
+  maxDistant: 1.15
 --- !u!54 &3967835743163669103
 Rigidbody:
   m_ObjectHideFlags: 0
