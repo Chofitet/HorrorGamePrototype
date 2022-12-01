@@ -868,6 +868,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8059e341f8cb45c40b6b5803af4fa75b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  k_Drag: 10
+  k_AngularDrag: 5
   ForceOpen: 5
   StopPoint: {fileID: 8242814826091207455}
 --- !u!54 &5743191862726398860
