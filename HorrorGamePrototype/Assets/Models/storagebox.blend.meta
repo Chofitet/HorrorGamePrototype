@@ -3,7 +3,22 @@ guid: 75f72011798bd234497ebb3db0acd51f
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: shoeboxMat
+    second: {fileID: 2100000, guid: ff5bda64d6eeda64fba1fb601a40a20a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: storageboxMat
+    second: {fileID: 2100000, guid: 628635dd99234a14b9c1af8db1a661f0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: storageboxMat1
+    second: {fileID: 2100000, guid: 1a07dc20701f5b6498d543d79e9e5f38, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
