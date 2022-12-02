@@ -22,7 +22,7 @@ public class SystemEnter_ExitTrigger : MonoBehaviour
 
     }
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (trigger2.GetComponent<Enter_ExitTrigger>()._ExitTrigger)
         {

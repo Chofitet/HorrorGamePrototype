@@ -11,7 +11,7 @@ public class DialogueSystem : MonoBehaviour
     [SerializeField] float Distant = 1.15f;
     float AuxDistant;
     Inventary inventary;
-    int CommentaryNumber;
+    public int CommentaryNumber;
 
     [SerializeField] GameObject flipRoom;
     [SerializeField] GameObject BaseRoom;
