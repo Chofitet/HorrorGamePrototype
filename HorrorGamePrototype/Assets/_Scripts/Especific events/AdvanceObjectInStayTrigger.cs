@@ -9,11 +9,15 @@ public class AdvanceObjectInStayTrigger : MonoBehaviour
     Vector3 Initialposition;
     [SerializeField] float speed;
     AudioSource AS;
+    [SerializeField] AudioSource UnlockDoor;
+    SoundManager SM;
+    [SerializeField] GameObject[] DesappearObjects;
+    [SerializeField] GameObject[] AppearObjects;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        SM = FindObjectOfType<SoundManager>();
         Initialposition = transform.position;
         AS = GetComponent<AudioSource>();
     }
@@ -36,6 +40,17 @@ public class AdvanceObjectInStayTrigger : MonoBehaviour
         if (transform.position == Array.position)
         {
             AS.enabled = false;
+            foreach(GameObject Objects in AppearObjects)
+            {
+                Objects.SetActive(true);
+            }
+            foreach (GameObject Objects in DesappearObjects)
+            {
+                Objects.SetActive(false);
+            }
+
+            SM.PlaySoud(UnlockDoor);
+            this.gameObject.SetActive(false);
         }
 
     }

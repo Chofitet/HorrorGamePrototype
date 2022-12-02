@@ -21,8 +21,9 @@ public class TwinklingLight : MonoBehaviour
         
         if(triggerCount.isTrigger && x == false)
         {
-            Debug.Log("eeeee" + triggerCount.isTrigger);
             anim.SetBool("normal", true);
+
+            StartCoroutine(Idea());
         }
 
         if(appears.activeSelf == true)
@@ -31,5 +32,11 @@ public class TwinklingLight : MonoBehaviour
             anim.SetBool("fast", false);
             x = true;
         }
+    }
+
+    IEnumerator Idea()
+    {
+        yield return new WaitForSeconds(4);
+        multipleTrigger.gameObject.SetActive(true);
     }
 }
