@@ -3,7 +3,17 @@ guid: ec0458ccc5adc5043b3bb3d264bf8177
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ceillingfanMat
+    second: {fileID: 2100000, guid: 09f6aed1cebd2cd429065cdece597cf7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ceillingfanMat1
+    second: {fileID: 2100000, guid: 672dfa1c43e0aed4a94c9530e94cd98d, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

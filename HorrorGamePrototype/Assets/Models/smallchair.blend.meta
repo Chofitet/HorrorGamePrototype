@@ -3,7 +3,12 @@ guid: 1887c302790a8684cb55cbcf9fe7f37e
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: smallchairMat
+    second: {fileID: 2100000, guid: afd24c911cd64d34a9f1c740695f558f, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

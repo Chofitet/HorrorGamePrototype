@@ -3,7 +3,17 @@ guid: b2cc7b4c558816f4faeda4544f8c51ad
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: crttvMat
+    second: {fileID: 2100000, guid: cbf43d18379bc00498221ebe3f01abe1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: crttvMat1
+    second: {fileID: 2100000, guid: e628009943bf90240816bf68d139f122, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

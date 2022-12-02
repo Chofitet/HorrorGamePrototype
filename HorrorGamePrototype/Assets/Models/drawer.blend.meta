@@ -3,7 +3,17 @@ guid: 4ca269e734cca294ebc31be1678ea493
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: drawerMat
+    second: {fileID: 2100000, guid: 16d1ebc26a60110489e0dd90752abeb0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: drawerMat1
+    second: {fileID: 2100000, guid: fb0955029a69c1348a9839be1b5b76ca, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

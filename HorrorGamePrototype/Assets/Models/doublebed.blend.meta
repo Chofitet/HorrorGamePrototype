@@ -3,7 +3,22 @@ guid: a39da1065009c79448dec791277b4945
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bedMaterial.001
+    second: {fileID: 2100000, guid: 9a76a267c76de4d46a25e69fcc9fe2e8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: doublebedMat
+    second: {fileID: 2100000, guid: b7c82af24d6113443be7e897095a312a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: doublebedMat1
+    second: {fileID: 2100000, guid: e2da9e199198e1a4cba1b0418538af6b, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
