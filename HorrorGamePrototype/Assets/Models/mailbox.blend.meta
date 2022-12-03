@@ -3,7 +3,12 @@ guid: 4609be92309dd5448a7b7631b7e878f1
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mailboxMat
+    second: {fileID: 2100000, guid: 9f6f08cf3a5cdda41b97b20cf7866d4b, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
