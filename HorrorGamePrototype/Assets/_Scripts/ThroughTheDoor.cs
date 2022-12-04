@@ -18,7 +18,9 @@ public class ThroughTheDoor : MonoBehaviour
     [SerializeField] CinemachineVirtualCamera Cam1;
     [SerializeField] GameObject NivelAnterior;
     [SerializeField] GameObject NivelSiguiente;
+    AudioSource audio;
 
+    SoundManager SM;
 
     FirstPersonControl firstPersonControl;
     int FPPriority;
@@ -26,11 +28,13 @@ public class ThroughTheDoor : MonoBehaviour
 
     private void OnEnable()
     {
+        SM = FindObjectOfType<SoundManager>();
         camera = Camera.main;
         timeline = GetComponentInChildren<TimelinePlay>();
         BrainCam = FindObjectOfType<CinemachineBrain>();
         if (NivelAnterior == null) NivelAnterior = new GameObject("Nivel Anterior");
         if (NivelSiguiente == null) NivelSiguiente = new GameObject("Nivel Siguiente");
+        audio = GetComponent<AudioSource>();
 
     }
     private void Update()
@@ -48,6 +52,7 @@ public class ThroughTheDoor : MonoBehaviour
     }
     public void ActivePortal()
     {
+        SM.PlaySoud(audio);
         FPContoller = GameObject.Find("FPSController");
         firstPersonControl = FPContoller.GetComponent<FirstPersonControl>();
         FPCam = FPContoller.GetComponentInChildren<CinemachineVirtualCamera>();
