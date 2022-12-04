@@ -34,6 +34,7 @@ public class LightswitchChange : MonoBehaviour
         
         if (isUpInAwake)
         {
+            
             if (!multipleTrigger.onTrigger)
             {
                 AuxAudio = Click;
@@ -46,7 +47,6 @@ public class LightswitchChange : MonoBehaviour
                 DownSwitch.SetActive(true);
                 UpSwitch.SetActive(false);
             }
-
         }
         else
         {

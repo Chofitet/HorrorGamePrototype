@@ -26,6 +26,13 @@ public class OneImpulseInCrash : MonoBehaviour
             dir = dir.normalized;
             RB.AddForce(dir * force);
             x = true;
+            StartCoroutine(Kinetic());
         }
+    }
+
+    IEnumerator Kinetic ()
+    {
+        yield return new WaitForSeconds(2);
+        RB.isKinematic = true;
     }
 }
