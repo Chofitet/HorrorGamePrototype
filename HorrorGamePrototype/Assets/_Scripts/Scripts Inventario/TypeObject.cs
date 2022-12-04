@@ -14,6 +14,7 @@ public enum ObjectType
     hook,
     file,
     flesh,
+    nothing,
 }
 
 public class TypeObject : MonoBehaviour

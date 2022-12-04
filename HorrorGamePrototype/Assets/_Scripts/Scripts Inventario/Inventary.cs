@@ -168,6 +168,10 @@ public class Inventary : MonoBehaviour
         {
             IMGinventaryObject.sprite = IMGflesh;
         }
+        else if (inventary.Contains(ObjectType.nothing))
+        {
+            IMGinventaryObject.sprite = IMGNull;
+        }
         else IMGinventaryObject.sprite = IMGNull;
     }
 

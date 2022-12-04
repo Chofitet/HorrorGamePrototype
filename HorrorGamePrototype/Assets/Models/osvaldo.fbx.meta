@@ -4,23 +4,29 @@ ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable:
   - first:
-      74: 416870459326255563
-    second: tpose
+      74: 6190031313098382673
+    second: Armature|collapsed
   - first:
-      74: 3709054281606389572
-    second: sitting
+      74: -3281714845378286312
+    second: Armature|dead
   - first:
-      74: -7290785390753415171
-    second: sleeping
+      74: -1978303741906493279
+    second: Armature|idle
   - first:
-      74: 3112028093874053627
-    second: sitting.001
+      74: -8455228998615597275
+    second: Armature|idleAlternative
   - first:
-      74: -5252816984213320552
-    second: idle
+      74: 6845241695333460743
+    second: Armature|kneeling
   - first:
-      74: 8497145277678188838
-    second: idle1
+      74: -1006011169695126390
+    second: Armature|sittingPensive
+  - first:
+      74: 7157879557875487373
+    second: Armature|sleeping
+  - first:
+      74: -126210440812934267
+    second: Armature|tpose
   externalObjects: {}
   materials:
     materialImportMode: 2

@@ -31,6 +31,7 @@ public class AntiGravityLigth : MonoBehaviour
             if (Input.GetMouseButtonDown(0) && hit.collider.gameObject.tag == "AntiGravityLigth")
             {
                 isAntiGravity = true;
+                RB.isKinematic = false;
                 StartCoroutine(ApagarLuz());
             }
         }

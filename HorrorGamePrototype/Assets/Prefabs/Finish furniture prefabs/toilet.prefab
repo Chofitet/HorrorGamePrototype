@@ -294,6 +294,7 @@ GameObject:
   - component: {fileID: 4240059611200212671}
   - component: {fileID: 1918165211882688886}
   - component: {fileID: 8645379818438936835}
+  - component: {fileID: 3870888953705151939}
   m_Layer: 0
   m_Name: toilet
   m_TagString: Untagged
@@ -379,3 +380,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.4716741, y: 0.573945, z: 0.39999992}
   m_Center: {x: 0, y: -0.09545978, z: 0.20000409}
+--- !u!114 &3870888953705151939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6306247803017129903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38410f67f11ca9a449ea2b5e70b75b34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TextoNull: I don't need to.
+  Texto1: The glass is empty now
+  Texto2: I don't need to.
+  Texto3: I don't need to.
