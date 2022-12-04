@@ -13,10 +13,12 @@ public class TeleportFPC : MonoBehaviour
     {
         if (GetComponent<MultipleTrigger>().onTrigger && x == false)
         {
-            Vector3 auxPosition = FP.transform.position;
+            Debug.Log("teleport");
             FP.GetComponent<FirstPersonControl>().enabled = false;
+            Vector3 auxPosition = FP.transform.position;
             auxPosition.x = SpotToTeleport.position.x;
             auxPosition.y = SpotToTeleport.position.y;
+            auxPosition.z = SpotToTeleport.position.z;
             x = true;
             FP.transform.position = auxPosition;
             StartCoroutine(enumerator());
@@ -25,7 +27,7 @@ public class TeleportFPC : MonoBehaviour
 
     IEnumerator enumerator()
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.1f);
         FP.GetComponent<FirstPersonControl>().enabled = true;
     }
 }

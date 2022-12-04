@@ -12,6 +12,8 @@ public class ThroughTheDoor : MonoBehaviour
     CinemachineBrain BrainCam;
     CinemachineVirtualCamera FPCam;
     GameObject FPContoller;
+    [SerializeField] GameObject puertaReplace;
+    [SerializeField] GameObject puerta;
     [SerializeField] CinemachineVirtualCamera Cam2;
     [SerializeField] CinemachineVirtualCamera Cam1;
     [SerializeField] GameObject NivelAnterior;
@@ -85,5 +87,7 @@ public class ThroughTheDoor : MonoBehaviour
         BrainCam.m_DefaultBlend.m_Time = 1.5f;
         timeline.gameObject.SetActive(false);
         NivelAnterior.SetActive(false);
+        puerta.SetActive(false);
+        puertaReplace.SetActive(true);
     }
 }

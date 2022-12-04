@@ -80,6 +80,18 @@ public class DialogueSystem : MonoBehaviour
             CommentaryNumber = 3;
         }
 
+        if(inventary.ContainsObject(ObjectType.nothing))
+        {
+            CommentaryNumber = 1;
+        }
+        if (inventary.ContainsObject(ObjectType.file))
+        {
+            CommentaryNumber = 2;
+        }
+        if (inventary.ContainsObject(ObjectType.coathanger))
+        {
+            CommentaryNumber = 3;
+        }
 
     }
 }
