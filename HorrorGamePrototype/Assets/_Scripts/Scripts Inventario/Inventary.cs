@@ -64,7 +64,7 @@ public class Inventary : MonoBehaviour
         auxposition = OutsideScreen;
         CheckInteract();
 
-        if (Input.GetKey(KeyCode.Tab) )
+        if (Input.GetKey(KeyCode.Tab) || Input.GetKey(KeyCode.I))
         {
             StartCoroutine(HUDColdDown());
             RefreshHud();

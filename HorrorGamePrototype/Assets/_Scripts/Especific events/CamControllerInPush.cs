@@ -40,6 +40,7 @@ public class CamControllerInPush : MonoBehaviour
         Cam.Priority = 1;
         Debug.Log("golpe");
         cinemachineBrain.m_DefaultBlend.m_Time = 1.5f;
+        multipleTrigger.gameObject.SetActive(false);
     }
     
 

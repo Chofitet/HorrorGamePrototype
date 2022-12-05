@@ -45,16 +45,7 @@ public class DialogueSystem : MonoBehaviour
             }
         }
 
-        if(CommentaryNumber == 2)
-        {
-            flipRoom.SetActive(true);
-            DoorAnimated.SetActive(false);
-        }
-        else if (CommentaryNumber == 3)
-        {
-            BaseRoom.SetActive(false);
-            DoorStatic.SetActive(true);
-        }
+        
     }
 
     
