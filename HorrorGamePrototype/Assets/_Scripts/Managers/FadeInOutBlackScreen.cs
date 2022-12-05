@@ -12,7 +12,6 @@ public class FadeInOutBlackScreen : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
         BlackScreen = GetComponent<Image>();
         
         if (FadeOut)
@@ -36,13 +35,16 @@ public class FadeInOutBlackScreen : MonoBehaviour
             fade += speed * Time.deltaTime;
             //vas al negro //apagado
             BlackScreen.color = new Color(BlackScreen.color.r, BlackScreen.color.g, BlackScreen.color.b, fade);
+
         }
         else
         {
             fade -= speed * Time.deltaTime;
             //vas al negro //apagado
             BlackScreen.color = new Color(BlackScreen.color.r, BlackScreen.color.g, BlackScreen.color.b, fade);
+
         }
         Mathf.Clamp(fade, 0, 1);
+
     }
 }
