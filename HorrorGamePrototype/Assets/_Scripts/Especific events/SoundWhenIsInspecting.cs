@@ -7,11 +7,13 @@ public class SoundWhenIsInspecting : MonoBehaviour
     InspectorObject inspector;
     [SerializeField] AudioSource AS;
     SoundManager SM;
+    InspectionObjectInRigthPositionTrigger triggerPosition;
     bool x;
     void Start()
     {
         inspector = FindObjectOfType<InspectorObject>();
         SM = FindObjectOfType<SoundManager>();
+        triggerPosition = GetComponentInChildren<InspectionObjectInRigthPositionTrigger>();
     }
 
     // Update is called once per frame
@@ -19,7 +21,14 @@ public class SoundWhenIsInspecting : MonoBehaviour
     {
         if (inspector.isInspecting && x == false && gameObject.layer == 6)
         {
-            StartCoroutine(PlaySound());
+            if(!triggerPosition.onTrigger) StartCoroutine(PlaySound());
+
+
+            if (triggerPosition.onTrigger)
+            {
+                AS.clip = null;
+                StopAllCoroutines();
+            }
         }
     }
 
